@@ -2,7 +2,7 @@
 using UnityEngine;
 using Utilities;
 
-namespace ldjam60
+namespace ldjam60.Interactables
 {
     public class InteractableController : HiddenSingleton<InteractableController>
     {

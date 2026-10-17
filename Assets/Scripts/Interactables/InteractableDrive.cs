@@ -1,4 +1,4 @@
-﻿namespace ldjam60
+﻿namespace ldjam60.Interactables
 {
     public class InteractableDrive : InteractableBase
     {

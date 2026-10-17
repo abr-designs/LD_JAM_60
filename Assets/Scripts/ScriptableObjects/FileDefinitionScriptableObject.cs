@@ -1,7 +1,7 @@
-﻿using Files;
+﻿using ldjam60.Files;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ldjam60.ScriptableObjects
 {
     public class FileDefinitionScriptableObject : ScriptableObject
     {

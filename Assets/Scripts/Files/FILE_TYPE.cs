@@ -1,4 +1,4 @@
-﻿namespace Files
+﻿namespace ldjam60.Files
 {
     public enum FILE_TYPE
     {

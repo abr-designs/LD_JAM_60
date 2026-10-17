@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ldjam60
+namespace ldjam60.Interactables
 {
     public abstract class InteractableBase : MonoBehaviour, IInteractable
     {
