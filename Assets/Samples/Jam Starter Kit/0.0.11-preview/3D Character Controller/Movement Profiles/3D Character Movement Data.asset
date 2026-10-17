@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb53417138442ce8d5b3efd632a3852, type: 3}
   m_Name: 3D Character Movement Data
   m_EditorClassIdentifier: 
-  maxSpeed: 2
+  maxSpeed: 4
   GroundAcceleration: 100
   AirAcceleration: 40
   accelerationFactorFromDot:

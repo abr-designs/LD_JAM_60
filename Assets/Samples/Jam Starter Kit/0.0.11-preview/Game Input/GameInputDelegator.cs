@@ -11,6 +11,7 @@ namespace GameInput
         public static event Action<bool> OnJumpPressed;
     
         public static event Action<bool> OnPrimaryPressChanged;
+        public static event Action<bool> OnInteractPressChanged;
         public static event Action<bool> OnRightClick;
         
         public static event Action<float> OnZoomChanged;
@@ -128,6 +129,18 @@ namespace GameInput
 
             var scrollDelta = context.ReadValue<float>();
             OnZoomChanged?.Invoke(scrollDelta);
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (LockInputs) 
+                return;
+
+            if (context.performed == false)
+                return;
+            
+            var pressed = context.ReadValueAsButton();
+            OnInteractPressChanged?.Invoke(pressed);
         }
 
         //============================================================================================================//

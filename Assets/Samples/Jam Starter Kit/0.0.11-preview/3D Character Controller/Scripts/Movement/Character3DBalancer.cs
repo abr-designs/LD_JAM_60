@@ -41,7 +41,7 @@ namespace Samples.CharacterController3D.Scripts
             Debug.DrawRay(m_rigidbody.position, Vector3.down * (characterMovementData.rideHeight * 2f), Color.red);
             Debug.DrawRay(m_rigidbody.position, Vector3.down * characterMovementData.rideHeight, Color.yellow);
             
-            Draw.Arrow(transform.position, velocity.normalized, Color.green);
+            //Draw.Arrow(transform.position, velocity.normalized, Color.green);
             
             Debug.DrawRay(m_rigidbody.position + (Vector3.down * characterMovementData.rideHeight), Vector3.up * m_groundDifference, Color.green);
 

@@ -12,6 +12,7 @@ namespace Samples.CharacterController3D.Scripts
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterController3D : MonoBehaviour
     {
+        public static float SpeedMult = 1f;
         public bool IsGrounded => m_3dBalancer.Grounded;
         
         [SerializeField]
@@ -124,7 +125,7 @@ namespace Samples.CharacterController3D.Scripts
             var unitVelocity = m_goalVelocity.normalized;
             var velocityDot = Vector3.Dot(inputGoal, unitVelocity);
             var accel = acceleration * characterMovementData.accelerationFactorFromDot.Evaluate(velocityDot);
-            var goalVelocity = inputGoal * (characterMovementData.maxSpeed * speedFactor);
+            var goalVelocity = inputGoal * (characterMovementData.maxSpeed * speedFactor * SpeedMult);
 
             m_goalVelocity = Vector3.MoveTowards(m_goalVelocity, 
                 goalVelocity + groundVelocity,

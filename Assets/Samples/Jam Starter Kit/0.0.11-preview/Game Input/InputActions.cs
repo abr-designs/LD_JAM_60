@@ -153,6 +153,16 @@ namespace GameInput
                     ""interactions"": """",
                     ""initialStateCheck"": true,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8129f9a-2aea-43db-8440-8da2944f1697"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -298,6 +308,17 @@ namespace GameInput
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e63a51ed-dc55-4293-9b82-392e2137eb37"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -318,6 +339,7 @@ namespace GameInput
             m_Gameplay_MouseLeftClick = m_Gameplay.FindAction("Mouse Left Click", throwIfNotFound: true);
             m_Gameplay_MouseRightClick = m_Gameplay.FindAction("Mouse Right Click", throwIfNotFound: true);
             m_Gameplay_Zoom = m_Gameplay.FindAction("Zoom", throwIfNotFound: true);
+            m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
             // Menu
             m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         }
@@ -407,6 +429,7 @@ namespace GameInput
         private readonly InputAction m_Gameplay_MouseLeftClick;
         private readonly InputAction m_Gameplay_MouseRightClick;
         private readonly InputAction m_Gameplay_Zoom;
+        private readonly InputAction m_Gameplay_Interact;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -442,6 +465,10 @@ namespace GameInput
             /// Provides access to the underlying input action "Gameplay/Zoom".
             /// </summary>
             public InputAction @Zoom => m_Wrapper.m_Gameplay_Zoom;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Interact".
+            /// </summary>
+            public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -486,6 +513,9 @@ namespace GameInput
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
 
             /// <summary>
@@ -515,6 +545,9 @@ namespace GameInput
                 @Zoom.started -= instance.OnZoom;
                 @Zoom.performed -= instance.OnZoom;
                 @Zoom.canceled -= instance.OnZoom;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
             }
 
             /// <summary>
@@ -682,6 +715,13 @@ namespace GameInput
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnZoom(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnInteract(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Menu" which allows adding and removing callbacks.
