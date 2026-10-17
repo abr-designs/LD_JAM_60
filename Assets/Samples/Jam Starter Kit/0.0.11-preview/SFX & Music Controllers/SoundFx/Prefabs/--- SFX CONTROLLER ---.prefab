@@ -183,3 +183,39 @@ MonoBehaviour:
     audioClips: []
     volume: 0
     maxPlaying: 0
+  - name: STEP
+    type: 1
+    audioClips:
+    - {fileID: 8300000, guid: d97cfb936ffa6264b8a7aca20587d42d, type: 3}
+    - {fileID: 8300000, guid: 2ee942300bd13e14e96cdc23a11222b0, type: 3}
+    - {fileID: 8300000, guid: e614611dd69ad2e47bde62160cdaff90, type: 3}
+    - {fileID: 8300000, guid: 817babcfc958e4a42864fdbe014cbfd1, type: 3}
+    - {fileID: 8300000, guid: 503fa573d0e6a2e46866671a40f323ba, type: 3}
+    - {fileID: 8300000, guid: 6983f152b1b01294ab38bd0f1ee44834, type: 3}
+    - {fileID: 8300000, guid: 1f53b54288d78714c85f78aacaed03d2, type: 3}
+    volume: 1
+    maxPlaying: 2
+  - name: CLICK
+    type: 2
+    audioClips:
+    - {fileID: 8300000, guid: cd2f50bcf3be0974299b74774b7dcb29, type: 3}
+    volume: 1
+    maxPlaying: 1
+  - name: BOOT_UP
+    type: 3
+    audioClips:
+    - {fileID: 8300000, guid: b8dd8a0829ac7d747916fe7729674b28, type: 3}
+    volume: 1
+    maxPlaying: 1
+  - name: LOAD_DRIVE
+    type: 4
+    audioClips:
+    - {fileID: 8300000, guid: 806b55710df07704f9cf0df90c7ae06c, type: 3}
+    volume: 1
+    maxPlaying: 1
+  - name: LOADING
+    type: 5
+    audioClips:
+    - {fileID: 8300000, guid: cd6cd3d30797cd646acfe7dd58c6e7a4, type: 3}
+    volume: 1
+    maxPlaying: 1
