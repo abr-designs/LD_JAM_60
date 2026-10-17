@@ -80,6 +80,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3392609588280745930, guid: 344137cc316792d4aac2e1a6a1c15a88, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4253074812003312114, guid: 344137cc316792d4aac2e1a6a1c15a88, type: 3}
       propertyPath: m_Height
       value: 2.02
