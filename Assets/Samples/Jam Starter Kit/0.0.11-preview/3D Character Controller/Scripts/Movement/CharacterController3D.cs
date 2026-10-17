@@ -104,6 +104,8 @@ namespace Samples.CharacterController3D.Scripts
         {
             GameInput.GameInputDelegator.OnMovementChanged -= OnMovementChanged;
             GameInput.GameInputDelegator.OnJumpPressed -= OnJumpPressed;
+
+            SpeedMult = 1f;
         }
 #endif
 

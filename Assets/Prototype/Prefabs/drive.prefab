@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.Interactables.InteractableDrive
   <InteractableRadius>k__BackingField: 0.8
-  speedEffector: 0.6
-  pickupAnimationTime: 5
+  speedEffector: 0.75
+  pickupAnimationTime: 3.5
 --- !u!65 &6243919966501162422
 BoxCollider:
   m_ObjectHideFlags: 0
