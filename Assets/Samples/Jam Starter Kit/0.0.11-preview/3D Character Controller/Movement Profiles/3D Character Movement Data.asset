@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb53417138442ce8d5b3efd632a3852, type: 3}
+  m_Name: 3D Character Movement Data
+  m_EditorClassIdentifier: 
+  maxSpeed: 2
+  GroundAcceleration: 100
+  AirAcceleration: 40
+  accelerationFactorFromDot:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.17333335
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.0380329
+      outSlope: 0
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0.15466666
+      outWeight: 0.13866666
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0
+      outSlope: 0
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxAccelerationForce: 75
+  maxAccelerationForceFactorFromDot:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.17333335
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.0380329
+      outSlope: 0
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0.15466666
+      outWeight: 0.13866666
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0
+      outSlope: 0
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  forceScale: {x: 1, y: 0, z: 1}
+  gravityScaleDrop: 10
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 192
+  JumpHeightCompensationFactor: 1.054
+  MaxVerticalVelocity: 50
+  JumpHeight: 1
+  TimeTillJumpApex: 0.3
+  GravityOnReleaseMultiplier: 2
+  MaxFallSpeed: 26
+  NumberOfJumpsAllowed: 0
+  TimeForUpwardsCancel: 0.027
+  ApexThreshold: 0.97
+  ApexHangTime: 0.04
+  JumpBufferTime: 0.125
+  JumpCoyoteTime: 0.1
+  rideHeight: 1.1
+  springStrength: 1317.9
+  springDamper: 0.1
+  uprightStrength: 70.58
+  uprightDamper: 2.17
