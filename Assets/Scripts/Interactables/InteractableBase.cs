@@ -4,8 +4,11 @@ namespace ldjam60.Interactables
 {
     public abstract class InteractableBase : MonoBehaviour, IInteractable
     {
-        public bool IsInteractable { get; }
-        public float InteractableRadius { get; }
+        public Vector3 WorldPosition => transform.position;
+        public abstract bool IsInteractable { get; }
+        [field: SerializeField] 
+        public float InteractableRadius { get; protected set; }
+
         
         protected void OnEnable()
         {
@@ -19,5 +22,6 @@ namespace ldjam60.Interactables
 
 
         public abstract void Interact();
+
     }
 }
