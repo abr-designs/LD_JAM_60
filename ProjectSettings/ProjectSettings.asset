@@ -835,6 +835,7 @@ PlayerSettings:
   webEnableSubmoduleStrippingCompatibility: 0
   webProgressiveAssetLoading: 0
   scriptingDefineSymbols:
+    Standalone: JAM_INPUT_DELEGATOR
     WebGL: JAM_INPUT_DELEGATOR
   additionalCompilerArguments: {}
   platformArchitecture: {}
