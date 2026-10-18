@@ -89,10 +89,15 @@ public class Drone : MonoBehaviour
     float timer = 0.0f;
     void Seek(float distance)
     {
+        Debug.Log("Seeking player");
+
         timer += Time.deltaTime;
+
         if (timer > wait_time)
+        {
             agent.destination = player.transform.position;
-        timer = 0.0f;
+            timer = 0.0f;
+        }
         if (distance < alert_distance)
         {
             state = DroneState.Alert;
@@ -107,11 +112,19 @@ public class Drone : MonoBehaviour
     float flash_timer = 0.0f;
 
     bool flashing_on = false;
+
+    float alert_wait_time = 5.0f;
+    float alert_wait_timer = 0.0f;
     void Alert(float distance)
     {
+        agent.isStopped = true;
+
         flash_timer += Time.deltaTime;
+        alert_wait_timer += Time.deltaTime;
+
         if (flash_timer > flash_time)
         {
+
             flashing_on = !flashing_on;
             flash_timer = 0.0f;
             if (flashing_on)
@@ -123,9 +136,15 @@ public class Drone : MonoBehaviour
                 material.SetColor("_EmissionColor", Color.black);
             }
         }
-        if (distance > alert_distance)
+        if (alert_wait_timer > alert_wait_time)
         {
-            state = DroneState.Seek;
+            if (distance > alert_distance)
+            {
+                alert_wait_timer = 0.0f;
+                material.SetColor("_EmissionColor", Color.black);
+                agent.isStopped = false;
+                state = DroneState.Seek;
+            }
         }
         //material.DisableKeyword("_EMISSION");
         //material.EnableKeyword("_EMISSION");
@@ -139,6 +158,17 @@ public class Drone : MonoBehaviour
         {
             // Handle arrest logic
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (Application.isPlaying == false)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(agent.destination, 0.25f);
     }
 
 }
