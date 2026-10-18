@@ -12,10 +12,10 @@ public class Drone : MonoBehaviour
         Alert,
         Arrest
     }
-    
+
     public static event Action<bool> OnPlayerSpotted;
     private static bool s_alertingToPlayer;
-    
+
     [SerializeField]
     private Transform[] patrolPoints;
 
@@ -31,7 +31,7 @@ public class Drone : MonoBehaviour
     [SerializeField]
     private Material material;
     private int index = 0;
-    
+
     private DroneState state;
 
 
@@ -112,18 +112,18 @@ public class Drone : MonoBehaviour
         }
         Ray ray = new Ray(transform.position + new UnityEngine.Vector3(0, 1, 0), transform.forward);
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position + new UnityEngine.Vector3(0, 1, 1.5f), 1f, transform.forward, out hit, alert_distance))
-        {
-            // Check if the hit object has the "Player" tag
-            if (hit.collider.CompareTag("Player"))
-            {
-                state = DroneState.Seek;
-            }
+        // if (Physics.SphereCast(transform.position + new UnityEngine.Vector3(0, 1, 1.5f), 1f, transform.forward, out hit, alert_distance))
+        // {
+        //     // Check if the hit object has the "Player" tag
+        //     if (hit.collider.CompareTag("Player"))
+        //     {
+        //         state = DroneState.Seek;
+        //     }
 
-        }
+        // }
         if (distance < seek_distance)
         {
-
+            state = DroneState.Seek;
         }
     }
 
@@ -206,7 +206,7 @@ public class Drone : MonoBehaviour
                 agent.isStopped = false;
                 state = DroneState.Seek;
                 s_alertingToPlayer = false;
-                
+
                 OnPlayerSpotted?.Invoke(s_alertingToPlayer);
             }
         }
