@@ -31,7 +31,7 @@ namespace ldjam60.Interactables
         private float updateInterval;
         private float m_updateTimer;
         
-        private IInteractable m_closestInteractable;
+        private InteractableBase m_closestInteractable;
 
         [Header("Carry Info")]
         [SerializeField]
@@ -76,11 +76,16 @@ namespace ldjam60.Interactables
             if (closest == m_closestInteractable)
                 return;
             
-            m_closestInteractable = closest;
+            m_closestInteractable = (InteractableBase)closest;
             OnNewInteractableInRange?.Invoke(closest);
         }
 
         private void OnDisable()
+        {
+            GameInputDelegator.OnInteractPressChanged -= OnInteractPressed;
+        }
+        
+        private void OnDestroy()
         {
             GameInputDelegator.OnInteractPressChanged -= OnInteractPressed;
 

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
   fileType: 3
   fileName: _data_archive.zip
-  progressTowardsObjective: 0
+  progressTowardsObjective: 20
   fileContents: Compressed file
   image: {fileID: 0}
