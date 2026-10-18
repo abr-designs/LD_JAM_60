@@ -180,8 +180,10 @@ MonoBehaviour:
   sfxDatas:
   - name: NONE
     type: 0
-    audioClips: []
-    volume: 0
+    audioClips:
+    - {fileID: 0}
+    - {fileID: 0}
+    volume: 1
     maxPlaying: 0
   - name: STEP
     type: 1
@@ -193,8 +195,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 503fa573d0e6a2e46866671a40f323ba, type: 3}
     - {fileID: 8300000, guid: 6983f152b1b01294ab38bd0f1ee44834, type: 3}
     - {fileID: 8300000, guid: 1f53b54288d78714c85f78aacaed03d2, type: 3}
-    volume: 1
-    maxPlaying: 2
+    volume: 0.8
+    maxPlaying: 4
   - name: CLICK
     type: 2
     audioClips:
@@ -217,5 +219,11 @@ MonoBehaviour:
     type: 5
     audioClips:
     - {fileID: 8300000, guid: cd6cd3d30797cd646acfe7dd58c6e7a4, type: 3}
+    volume: 1
+    maxPlaying: 1
+  - name: RUMMAGE
+    type: 6
+    audioClips:
+    - {fileID: 8300000, guid: 44060e8ca7950ea4ab21aa7ff2c5122f, type: 3}
     volume: 1
     maxPlaying: 1

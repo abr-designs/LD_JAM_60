@@ -7,6 +7,7 @@
         CLICK = 2,
         BOOT_UP = 3,
         LOAD_DRIVE = 4,
-        LOADING =  5
+        LOADING =  5,
+        RUMMAGE = 6,
     }
 }

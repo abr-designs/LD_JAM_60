@@ -31,7 +31,7 @@ public class PlayerAnimationSoundEventListener : MonoBehaviour
         chunkWalkAudioSource.Play();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         chunkWalkAudioSource.volume = Mathf.SmoothDamp(
             chunkWalkAudioSource.volume,
