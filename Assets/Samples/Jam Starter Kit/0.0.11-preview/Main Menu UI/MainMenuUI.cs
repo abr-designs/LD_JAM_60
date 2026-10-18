@@ -26,7 +26,7 @@ namespace UI
             Assert.IsNotNull(settingsWindow);
             
             ScreenFader.ForceSetColorBlack();
-            playButton.onClick.AddListener(OnPlayButtonPressed);
+            //playButton.onClick.AddListener(OnPlayButtonPressed);
             
             settingsButton.onClick.AddListener(OnSettingButtonPressed);
 
@@ -41,23 +41,23 @@ namespace UI
 
         //============================================================================================================//
         
-        private void OnPlayButtonPressed()
+        /*private void OnPlayButtonPressed()
         {
             ScreenFader.FadeOut(1f, () =>
             {
-                SceneManager.LoadScene(1);
+                //SceneManager.LoadScene(1);
             });
-        }
+        }*/
         
         private void OnSettingButtonPressed()
         {
             settingsWindow.OpenWindow();
         }
 
-        private void OnQuitButtonPressed()
+        /*private void OnQuitButtonPressed()
         {
             Application.Quit();
-        }
+        }*/
         
         //============================================================================================================//
     }

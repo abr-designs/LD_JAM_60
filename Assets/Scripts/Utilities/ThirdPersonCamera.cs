@@ -48,23 +48,13 @@ namespace ldjam60.Utilities
                 enabledLookAction = true;
             }*/
             GameInputDelegator.OnMouseMoved += OnMouseMoved;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
-        private void OnMouseMoved(Vector2 mouseDelta)
-        {
-            lastMouseDelta = mouseDelta;
-        }
 
-        private void OnDisable()
-        {
-            /*if (enabledLookAction && lookAction != null &&
-                lookAction.action != null)
-            {
-                lookAction.action.Disable();
-                enabledLookAction = false;
-            }*/
-            GameInputDelegator.OnMouseMoved -= OnMouseMoved;
-        }
+
+
 
         private void Start()
         {
@@ -72,9 +62,6 @@ namespace ldjam60.Utilities
 
             yaw = targetYaw = angles.y;
             pitch = targetPitch = angles.x;
-
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
 
         private void LateUpdate()
@@ -113,6 +100,26 @@ namespace ldjam60.Utilities
                 positionSmoothTime);
 
             transform.rotation = rotation;
+        }
+        
+        private void OnDisable()
+        {
+            /*if (enabledLookAction && lookAction != null &&
+                lookAction.action != null)
+            {
+                lookAction.action.Disable();
+                enabledLookAction = false;
+            }*/
+            GameInputDelegator.OnMouseMoved -= OnMouseMoved;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
+        //Callbacks
+        //================================================================================================================//
+        private void OnMouseMoved(Vector2 mouseDelta)
+        {
+            lastMouseDelta = mouseDelta;
         }
     }
 }
