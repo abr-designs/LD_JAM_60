@@ -77,7 +77,6 @@ public class Drone : MonoBehaviour
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             index = (index + 1) % patrolPoints.Length;
-
             agent.destination = patrolPoints[index].position;
         }
 

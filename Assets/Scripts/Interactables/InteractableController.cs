@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameInput;
+using Samples.CharacterController3D.Scripts;
 using UnityEngine;
 using Utilities;
 
@@ -13,6 +14,11 @@ namespace ldjam60.Interactables
 
         public static IInteractable HoldingInteractable { get; private set; }
         public static bool PauseScan { get; set; }
+        
+        [SerializeField, Range(0f, 1f)]
+        private float speedEffector = 0.75f;
+        private float m_startingSpeed;
+        
 
         [SerializeField, Min(0f)]
         private float interactableRadius;
@@ -45,6 +51,8 @@ namespace ldjam60.Interactables
 
         private void Start()
         {
+            m_startingSpeed = CharacterController3D.SpeedMult;
+            
             m_playerTransform = transform;
             m_updateTimer = updateInterval;
         }
@@ -100,7 +108,10 @@ namespace ldjam60.Interactables
             for (var i = 0; i < s_interactables.Count; i++)
             {
                 var interactable = s_interactables[i];
-                
+
+                if (!interactable.enabled)
+                    continue;
+
                 //If the player is holding something, don't try to hold another?
                 //TODO See if the player should swap what they're holding
                 if(HoldingInteractable != null && interactable is ICanBeCarried)
@@ -143,7 +154,6 @@ namespace ldjam60.Interactables
             }
             
         }
-
 
         //Static Functions
         //================================================================================================================//
@@ -188,6 +198,7 @@ namespace ldjam60.Interactables
                 Quaternion.Euler(Instance.localCarryRotationOffset));
             
             OnCarryingInteractable?.Invoke(HoldingInteractable);
+            CharacterController3D.SpeedMult = Instance.speedEffector;
         }
 
         public static void DropInteractable()
@@ -199,8 +210,8 @@ namespace ldjam60.Interactables
             
             canBeCarried.Drop();
             HoldingInteractable = null;
-            
-            OnCarryingInteractable?.Invoke(HoldingInteractable);
+            OnCarryingInteractable?.Invoke(null);
+            CharacterController3D.SpeedMult = Instance.m_startingSpeed;
         }
         
         //Editor Functions
@@ -214,7 +225,6 @@ namespace ldjam60.Interactables
             
             if (s_interactables == null || s_interactables.Count == 0)
                 return;
-            
             
             foreach (var interactable in s_interactables)
             {
