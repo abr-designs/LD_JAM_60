@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: chunkWalkAudioSource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6969672352954270137, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969672352954270137, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
+      propertyPath: chunkWalkAudioSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7784584202105460958, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
       propertyPath: m_Name
       value: CinematicsPlayer
@@ -75,12 +83,18 @@ PrefabInstance:
     - {fileID: 139651079803295350, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 572834152821788705, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
+    - {fileID: 1715476591070967868, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7784584202105460958, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5575155597070900309}
   m_SourcePrefab: {fileID: 100100000, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
+--- !u!95 &2606569192191987299 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1479436649936245594, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
+  m_PrefabInstance: {fileID: 3505039753318784313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6677713462408070631 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7784584202105460958, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
@@ -98,4 +112,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0da9cc141efd04388b47af62c5f7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  animator: {fileID: 0}
+  animator: {fileID: 2606569192191987299}
