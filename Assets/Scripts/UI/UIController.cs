@@ -84,6 +84,7 @@ public class UIController : Singleton<UIController>
     private Action m_onFinished;
     public void MountDrive(List<FileDefinitionScriptableObject> files, Action onFinished)
     {
+        m_currentFiles = files;
         m_onFinished = onFinished;
         
         CleanFiles();
@@ -142,8 +143,8 @@ public class UIController : Singleton<UIController>
     private void TryExit()
     {
         SetWindowActive(false);
-        
-        if(m_currentFiles.Any(x => x.FileType == FILE_TYPE.ZIP && !x.claimed))
+
+        if(!m_currentFiles.Any(x => x.FileType == FILE_TYPE.ZIP && !x.claimed))
             m_onFinished?.Invoke();
         
         //TODO need to attempt to show a warning to the user here

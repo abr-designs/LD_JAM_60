@@ -33,7 +33,7 @@ namespace UI
 #if UNITY_WEBGL
             quitButton.gameObject.SetActive(false);
 #else
-            quitButton.onClick.AddListener(OnQuitButtonPressed);
+            //quitButton.onClick.AddListener(OnQuitButtonPressed);
 #endif
 
             ScreenFader.FadeIn(1f, null);
