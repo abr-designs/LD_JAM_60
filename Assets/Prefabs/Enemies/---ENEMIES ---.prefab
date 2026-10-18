@@ -239,6 +239,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7222640479420434394}
     m_Modifications:
+    - target: {fileID: 275855793553596328, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
       propertyPath: mech
       value: 
@@ -351,6 +355,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7222640479420434394}
     m_Modifications:
+    - target: {fileID: 275855793553596328, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
       propertyPath: mech
       value: 
@@ -463,6 +471,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7222640479420434394}
     m_Modifications:
+    - target: {fileID: 275855793553596328, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
       propertyPath: mech
       value: 
@@ -648,6 +660,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7222640479420434394}
     m_Modifications:
+    - target: {fileID: 275855793553596328, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
       propertyPath: mech
       value: 
@@ -760,6 +776,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7222640479420434394}
     m_Modifications:
+    - target: {fileID: 275855793553596328, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
       propertyPath: mech
       value: 
@@ -872,6 +892,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7222640479420434394}
     m_Modifications:
+    - target: {fileID: 275855793553596328, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
