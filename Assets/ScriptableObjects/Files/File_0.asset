@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: File_0
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
   fileType: 0
-  fileName: 
+  fileName: datalog 0
   progressTowardsObjective: 0
-  fileContents: 
+  fileContents: " June 12,  4406: \nMessage From: Tabitha Riggs \nThe Great Calamity has left the world scarred and ruined. Resources are running scarce, and those of us who remain are barely scraping by. One source points to this scrap yard as where it all started. It might be worth a dig if you are up for it. Might point us in the right direction to some hidden resource caches."
   image: {fileID: 0}
