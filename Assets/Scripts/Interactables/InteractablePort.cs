@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Audio;
 using Audio.SoundFX;
@@ -29,6 +30,15 @@ namespace ldjam60.Interactables
         private Vector3 insertStartPosition;
         [SerializeField] 
         private Vector3 insertEndPosition;
+        
+        [SerializeField]
+        private Vector3 insertStartRotation;
+        [SerializeField] 
+        private Vector3 insertEndRotation;
+
+        
+        
+        
         [SerializeField]
         private float animationTime;
         [SerializeField]
@@ -95,13 +105,50 @@ namespace ldjam60.Interactables
             
             //Reposition & Animate
             interactableDrive.transform.SetParent(transform, false);
-            interactableDrive.transform.localPosition = insertStartPosition;
-            interactableDrive.transform.up = transform.up;
+            //interactableDrive.transform.localPosition = insertStartPosition;
+            //interactableDrive.transform.up = transform.up;
+
+            StartCoroutine(AnimationCoroutine());
+            
+            
+            /*
             interactableDrive.transform.TweenTo(SPACE.LOCAL, insertEndPosition, animationTime, CURVE.EASE_IN_OUT,
                 () =>
                 {
-                    SFX.LOADING.PlaySound();
+                    
                 });
+                */
+
+            IEnumerator AnimationCoroutine()
+            {
+                var halfTime = animationTime / 2f;
+                var currentPosition = transform.localPosition;
+                var currentRotation = transform.localRotation;
+                var startRotation = Quaternion.Euler(insertStartRotation);
+                var endRotation = Quaternion.Euler(insertEndRotation);
+
+                for (var t = 0f; t <= halfTime; t += Time.deltaTime)
+                {
+                    transform.localPosition = Vector3.Lerp(currentPosition, insertStartPosition,
+                        animationCurve.Evaluate(t / halfTime));
+                    transform.localRotation = Quaternion.Slerp(currentRotation, startRotation,
+                        animationCurve.Evaluate(t / halfTime));
+                    yield return null;
+                }
+
+
+                for (var t = 0f; t <= halfTime; t += Time.deltaTime)
+                {
+                    transform.localPosition = Vector3.Lerp(insertStartPosition, insertStartPosition,
+                        animationCurve.Evaluate(t / halfTime));
+                    transform.localRotation =
+                        Quaternion.Slerp(startRotation, endRotation, animationCurve.Evaluate(t / halfTime));
+
+                    yield return null;
+                }
+
+                SFX.LOADING.PlaySound();
+            }
         }
 
         //Unity Editor Functions
