@@ -68,6 +68,12 @@ public class UIController : Singleton<UIController>
         });
         
         IncrementProgress(0);
+        
+        m_buttonsTexts =  new TMP_Text[buttons.Length];
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            m_buttonsTexts[i] =  buttons[i].GetComponentInChildren<TMP_Text>();
+        }
     }
 
     //Setup
@@ -133,18 +139,21 @@ public class UIController : Singleton<UIController>
     {
         //TODO Add the screen fade
         window.SetActive(active);
+        
+        Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = active;
     }
     
     //Callbacks
     //================================================================================================================//
 
-    private void OnFileSelected(FileDefinitionScriptableObject fileUIElement)
+    private void OnFileSelected(FileUIElement fileUIElement, FileDefinitionScriptableObject fileDefinition)
     {
-        fileContentsHeaderText.text = fileUIElement.FileName;
-        fileContentsText.text = fileUIElement.FileContents;
+        fileContentsHeaderText.text = fileDefinition.FileName;
+        fileContentsText.text = fileDefinition.FileContents;
 
-        fileContentsImage.gameObject.SetActive(fileUIElement.Image == null);
-        fileContentsImage.sprite = fileUIElement.Image;
+        fileContentsImage.gameObject.SetActive(fileDefinition.Image !=null);
+        fileContentsImage.sprite = fileDefinition.Image;
 
         //TODO Need to finish
         for (int i = 0; i < buttons.Length; i++)
@@ -153,12 +162,14 @@ public class UIController : Singleton<UIController>
             buttons[i].gameObject.SetActive(false);
         }
         
-        if(fileUIElement.FileType == FILE_TYPE.ZIP && fileUIElement.ProgressTowardsObjective > 0)
+        if(fileDefinition.FileType == FILE_TYPE.ZIP && fileDefinition.ProgressTowardsObjective > 0)
         {
+            m_buttonsTexts[0].text = "Unzip";
             buttons[0].onClick.AddListener(() =>
             {
-                IncrementProgress(fileUIElement.ProgressTowardsObjective);
-                buttons[0].interactable = false;
+                IncrementProgress(fileDefinition.ProgressTowardsObjective);
+                buttons[0].gameObject.SetActive(false);
+                fileUIElement.gameObject.SetActive(false);
             });
             
             buttons[0].interactable = true;

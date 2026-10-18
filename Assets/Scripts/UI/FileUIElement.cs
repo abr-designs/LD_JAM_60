@@ -17,7 +17,7 @@ public class FileUIElement : MonoBehaviour
 
     private FileDefinitionScriptableObject m_data;
 
-    public void Init(FileDefinitionScriptableObject file, Action<FileDefinitionScriptableObject> onPressed)
+    public void Init(FileDefinitionScriptableObject file, Action<FileUIElement, FileDefinitionScriptableObject> onPressed)
     {
         button.onClick.RemoveAllListeners();
         m_data = file;
@@ -27,7 +27,7 @@ public class FileUIElement : MonoBehaviour
         
         button.onClick.AddListener(() =>
         {
-            onPressed?.Invoke(file);
+            onPressed?.Invoke(this, file);
         });
     }
 
