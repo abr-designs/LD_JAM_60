@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1c2b9678e5460ea490e889f7091595, type: 3}
   m_Name: File_6
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
-  fileType: 0
+  fileType: 1
   fileName: datalog 6
   progressTowardsObjective: 0
   fileContents: "Datalog 6:\r\nPublic radio broadcast: Hello, I don\u2019t know if this is getting out, but the Yanthem is under attack by the security droids that used to guard our building. I don't know what\u2019s going on (gunshots and screaming can be heard). Please send help. None of the cell towers are working; I\u2019m praying that this shortwave radio signal will reach someone."

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1c2b9678e5460ea490e889f7091595, type: 3}
   m_Name: File_5
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
-  fileType: 0
+  fileType: 1
   fileName: datalog 5
   progressTowardsObjective: 0
   fileContents: "Datalog 5:\r\nDr. Chase Reginald Erret was found dead this morning in his condo. What most considered a self-inflicted death, officials suspect foul play. Their connections to Melsa Industries as their lead developer have come to light on social media. This comes as a surprise just a few short days after recent dog whistles concerned with Melsa\u2019s private removal of human safety guardrails in both their military and industrial machinery lineups.\r\n"

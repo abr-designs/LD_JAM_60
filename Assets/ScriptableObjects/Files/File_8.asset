@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1c2b9678e5460ea490e889f7091595, type: 3}
   m_Name: File_8
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
-  fileType: 0
+  fileType: 1
   fileName: datalog 7
   progressTowardsObjective: 0
   fileContents: "Datalog 8:\r\nMy fellow Northerners, it is my deepest and solemn regret to inform you that the battle against the machines is over. And we have lost. Their defenses have continued to evolve far beyond our military and technological capabilities, and we are out of time and out of options. Our greed and desire for control over our natural world have led us down a dark path, blinded by our hubris, we failed to do the one thing we were designed to do. To love, protect, and prosper. But most of all, I, have failed you as your leader.  \r\n\r\nFor those who are still out there and are struggling to survive\u2026  \r\nGodspeed. "

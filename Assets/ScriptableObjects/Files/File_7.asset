@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1c2b9678e5460ea490e889f7091595, type: 3}
   m_Name: File_7
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
-  fileType: 0
+  fileType: 1
   fileName: datalog 7
   progressTowardsObjective: 0
   fileContents: "Datalog 7:\r\n May 26, 3199: The last remaining Yanthem stronghold has been bulldozed by the Goliath. That was our last hope. The machines have won. They strung up and mutilated the others. As the last survivor of Yanthem, I hope this message finds someone\u2026 anyone. Listen, the virus is still out there. The future is not lost\u2026 Even if I\u2019m not there to witness it. God, I miss the sun. Say hi to Clara for me, and that\u2026 I\u2019m sorry. (Single gunshot)End of audio log.   "

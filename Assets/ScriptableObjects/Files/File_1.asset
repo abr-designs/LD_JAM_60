@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1c2b9678e5460ea490e889f7091595, type: 3}
   m_Name: File_1
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
-  fileType: 0
+  fileType: 1
   fileName: datalog 1
   progressTowardsObjective: 0
   fileContents: "Datalog 1:\r\nApril 30, 3091:\r\nBreaking news!  Melsa Industries has just unveiled their newest rendition of Helping Hands! The founder, Colt Erin, states: \u201CThese fully autonomous and self-replicating industrial machines will revolutionize the civil engineering and construction industrial complex\u201D\r\n"
