@@ -1,10 +1,21 @@
-using System.Numerics;
+using System;
 using UnityEngine;
 using UnityEngine.AI; // Required for NavMesh components
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Drone : MonoBehaviour
 {
+    private enum DroneState
+    {
+        Patrol,
+        Seek,
+        Alert,
+        Arrest
+    }
+    
+    public static event Action<bool> OnPlayerSpotted;
+    private static bool s_alertingToPlayer;
+    
     [SerializeField]
     private Transform[] patrolPoints;
 
@@ -20,22 +31,24 @@ public class Drone : MonoBehaviour
     [SerializeField]
     private Material material;
     private int index = 0;
-
-    [SerializeField]
-    private Mech mech;
+    
     private DroneState state;
 
 
     private Color Yellowish = new Color(191, 109, 22);
-    enum DroneState
+
+
+
+    //Unity Functions
+    //================================================================================================================//
+
+    private void OnEnable()
     {
-        Patrol,
-        Seek,
-        Alert,
-        Arrest
+        Mech.OnPlayerCaptured += OnPlayerCaptured;
     }
 
-    void Start()
+
+    private void Start()
     {
 
         agent = GetComponent<NavMeshAgent>();
@@ -44,7 +57,7 @@ public class Drone : MonoBehaviour
         //material = GetComponent<Renderer>().material;
     }
 
-    void Update()
+    private void Update()
     {
         float distance = UnityEngine.Vector3.Distance(agent.transform.position, player.transform.position);
 
@@ -83,7 +96,13 @@ public class Drone : MonoBehaviour
         // }
     }
 
-    void Patrol(float distance)
+    private void OnDisable()
+    {
+        s_alertingToPlayer = false;
+        Mech.OnPlayerCaptured -= OnPlayerCaptured;
+    }
+
+    private void Patrol(float distance)
     {
         material.SetColor("_EmissionColor", Yellowish);
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
@@ -107,9 +126,11 @@ public class Drone : MonoBehaviour
 
         }
     }
-    float wait_time = 1.0f;
-    float timer = 0.0f;
-    void Seek(float distance)
+
+    private float wait_time = 1.0f;
+    private float timer = 0.0f;
+
+    private void Seek(float distance)
     {
         material.SetColor("_EmissionColor", Yellowish);
         //Debug.Log("Seeking player");
@@ -141,37 +162,29 @@ public class Drone : MonoBehaviour
         // }
     }
 
-    float flash_time = 0.5f;
-    float flash_timer = 0.0f;
+    private float flash_time = 0.5f;
+    private float flash_timer = 0.0f;
 
-    bool flashing_on = false;
+    private bool flashing_on = false;
 
-    float alert_wait_time = 5.0f;
-    float alert_wait_timer = 0.0f;
+    private float alert_wait_time = 5.0f;
+    private float alert_wait_timer = 0.0f;
 
 
-
-    void Alert(float distance)
+    private void Alert(float distance)
     {
         agent.isStopped = true;
 
         flash_timer += Time.deltaTime;
         alert_wait_timer += Time.deltaTime;
 
-
-        if (distance < alert_distance)
+        if (distance < alert_distance && !s_alertingToPlayer)
         {
-            mech.total_timer += Time.deltaTime;
-            float t = mech.total_timer / mech.TimeUntilDeath;
-            mech.transform.position = UnityEngine.Vector3.Lerp(mech.MechStartPosition, mech.MechEndPosition, t);
-            if (mech.total_timer >= mech.TimeUntilDeath)
-            {
-                state = DroneState.Arrest;
-            }
+            s_alertingToPlayer = true;
+            OnPlayerSpotted?.Invoke(s_alertingToPlayer);
         }
         if (flash_timer > flash_time)
         {
-
             flashing_on = !flashing_on;
             flash_timer = 0.0f;
             if (flashing_on)
@@ -192,6 +205,9 @@ public class Drone : MonoBehaviour
                 material.SetColor("_EmissionColor", Color.black);
                 agent.isStopped = false;
                 state = DroneState.Seek;
+                s_alertingToPlayer = false;
+                
+                OnPlayerSpotted?.Invoke(s_alertingToPlayer);
             }
         }
         //material.DisableKeyword("_EMISSION");
@@ -200,7 +216,8 @@ public class Drone : MonoBehaviour
 
     private float arrest_time = 2.0f;
     private float arrest_timer = 0.0f;
-    void Arrest()
+
+    private void Arrest()
     {
         arrest_timer += Time.deltaTime;
         if (arrest_timer > arrest_time)
@@ -210,6 +227,18 @@ public class Drone : MonoBehaviour
 
         }
     }
+
+    //Callbacks
+    //================================================================================================================//
+
+    private void OnPlayerCaptured()
+    {
+        state = DroneState.Arrest;
+    }
+
+    //Unity Editor Functions
+    //================================================================================================================//
+
 
     private void OnDrawGizmos()
     {
@@ -221,6 +250,8 @@ public class Drone : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(agent.destination, 0.25f);
     }
+    //================================================================================================================//
+
 
 }
 
