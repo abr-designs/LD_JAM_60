@@ -195,43 +195,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.549553
+      value: 11.692344
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3681983
+      value: 0.7163695
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.0742726
+      value: -3.0123386
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.7200581
+      value: 0.26393023
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.6108383
+      value: 0.4682669
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.11315268
+      value: -0.62450683
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.3091755
+      value: 0.56662005
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 166.922
+      value: 467.264
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -53.175995
+      value: -401.4
       objectReference: {fileID: 0}
     - target: {fileID: 4255309174283415487, guid: 2e64e3a49df8309468ce27ec57efa3ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 93.51
+      value: 75.145
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -610,6 +610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 315263813}
   - component: {fileID: 315263814}
+  - component: {fileID: 315263815}
   - component: {fileID: 315263812}
   - component: {fileID: 315263811}
   - component: {fileID: 315263810}
@@ -759,6 +760,20 @@ MonoBehaviour:
   maxPitch: 70
   rotationSmoothTime: 0.07
   positionSmoothTime: 0.1
+--- !u!114 &315263815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315263808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8682a08d689464792a20e926453fe71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ldjam60.Player.CameraShake
+  defaultIntensity: 0.15
+  defaultDuration: 0.25
 --- !u!1 &448775612
 GameObject:
   m_ObjectHideFlags: 0
