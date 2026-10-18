@@ -82,13 +82,13 @@ public class UIController : Singleton<UIController>
     //Setup
     //================================================================================================================//
     private Action m_onFinished;
-    public void MountDrive(InteractableDrive file, Action onFinished)
+    public void MountDrive(List<FileDefinitionScriptableObject> files, Action onFinished)
     {
         m_onFinished = onFinished;
         
         CleanFiles();
         CleanDisplay();
-        GenerateFiles(file.fileDefinitions);
+        GenerateFiles(files);
 
         SetWindowActive(true);
 
