@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using ldjam60.Files;
 using ldjam60.Interactables;
 using ldjam60.ScriptableObjects;
@@ -44,6 +45,8 @@ public class UIController : Singleton<UIController>
     private Button exitButton;
 
     private int m_progressAmount;
+
+    private List<FileDefinitionScriptableObject> m_currentFiles;
     
     
     //Unity Functions
@@ -62,11 +65,7 @@ public class UIController : Singleton<UIController>
         fileContentsText.text = string.Empty;
         fileContentsImage.sprite = null;
         fileContentsImage.gameObject.SetActive(false);
-        exitButton.onClick.AddListener(() =>
-        {
-            m_onFinished?.Invoke();
-            SetWindowActive(false);
-        });
+        exitButton.onClick.AddListener(TryExit);
         
         IncrementProgress(0);
         
@@ -81,9 +80,11 @@ public class UIController : Singleton<UIController>
 
     //Setup
     //================================================================================================================//
+    
     private Action m_onFinished;
     public void MountDrive(List<FileDefinitionScriptableObject> files, Action onFinished)
     {
+        m_currentFiles = files;
         m_onFinished = onFinished;
         
         CleanFiles();
@@ -103,7 +104,6 @@ public class UIController : Singleton<UIController>
         
     }
     
-
     private void GenerateFiles(IEnumerable<FileDefinitionScriptableObject> files)
     {
         foreach (var file in files)
@@ -138,6 +138,16 @@ public class UIController : Singleton<UIController>
             buttons[i].onClick.RemoveAllListeners();
             buttons[i].gameObject.SetActive(false);
         }
+    }
+
+    private void TryExit()
+    {
+        SetWindowActive(false);
+
+        if(!m_currentFiles.Any(x => x.FileType == FILE_TYPE.ZIP && !x.claimed))
+            m_onFinished?.Invoke();
+        
+        //TODO need to attempt to show a warning to the user here
     }
 
     //Progress
@@ -186,6 +196,7 @@ public class UIController : Singleton<UIController>
             m_buttonsTexts[0].text = "Unzip";
             buttons[0].onClick.AddListener(() =>
             {
+                fileDefinition.claimed = true;
                 IncrementProgress(fileDefinition.ProgressTowardsObjective);
                 buttons[0].gameObject.SetActive(false);
                 fileUIElement.gameObject.SetActive(false);

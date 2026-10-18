@@ -1349,6 +1349,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7840408981202707011, guid: 3490e41403ea9ef40bc463c3d79767e8, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: c79492f166fa00c468da95ed733f5047, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1656,12 +1660,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: e26eab62e0649694592ac906086eac95, type: 2}
     - target: {fileID: 8351886929190213829, guid: b59363fc3e589c34281250f18230b14f, type: 3}
-      propertyPath: functionalAudioSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9056634558516635985, guid: b59363fc3e589c34281250f18230b14f, type: 3}
-      propertyPath: drivePortInteractable
-      value: 
+      propertyPath: <InteractableRadius>k__BackingField
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
