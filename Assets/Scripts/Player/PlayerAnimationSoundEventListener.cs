@@ -50,6 +50,9 @@ public class PlayerAnimationSoundEventListener : MonoBehaviour
 
     private void StepSound()
     {
+        if (!m_isMoving)
+            return;
+        
         SFX.STEP.PlaySound(pitch:Random.Range(0.8f, 1.2f));
     }
 

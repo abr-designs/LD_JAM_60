@@ -1888,6 +1888,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 315263813}
+    - target: {fileID: 6382194208153125407, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
+      propertyPath: maxVolume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7784584202105460958, guid: b3360657841fe8a4aa2cc39352aeaf1f, type: 3}
       propertyPath: m_Name
       value: PlayerController
