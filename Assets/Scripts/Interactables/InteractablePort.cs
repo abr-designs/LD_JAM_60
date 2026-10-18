@@ -103,8 +103,9 @@ namespace ldjam60.Interactables
             interactableDrive.Carry();
             interactableDrive.enabled = false;
             
+            var targetTransform = interactableDrive.transform;
             //Reposition & Animate
-            interactableDrive.transform.SetParent(transform, false);
+            targetTransform.SetParent(transform, true);
             //interactableDrive.transform.localPosition = insertStartPosition;
             //interactableDrive.transform.up = transform.up;
 
@@ -122,32 +123,29 @@ namespace ldjam60.Interactables
             IEnumerator AnimationCoroutine()
             {
                 var halfTime = animationTime / 2f;
-                var currentPosition = transform.localPosition;
-                var currentRotation = transform.localRotation;
+                var currentPosition = targetTransform.localPosition;
+                var currentRotation = targetTransform.localRotation;
                 var startRotation = Quaternion.Euler(insertStartRotation);
                 var endRotation = Quaternion.Euler(insertEndRotation);
 
                 for (var t = 0f; t <= halfTime; t += Time.deltaTime)
                 {
-                    transform.localPosition = Vector3.Lerp(currentPosition, insertStartPosition,
-                        animationCurve.Evaluate(t / halfTime));
-                    transform.localRotation = Quaternion.Slerp(currentRotation, startRotation,
-                        animationCurve.Evaluate(t / halfTime));
+                    targetTransform.localPosition = Vector3.Lerp(currentPosition, insertStartPosition, animationCurve.Evaluate(t / halfTime));
+                    targetTransform.localRotation = Quaternion.Slerp(currentRotation, startRotation, animationCurve.Evaluate(t / halfTime));
                     yield return null;
                 }
 
-
                 for (var t = 0f; t <= halfTime; t += Time.deltaTime)
                 {
-                    transform.localPosition = Vector3.Lerp(insertStartPosition, insertStartPosition,
-                        animationCurve.Evaluate(t / halfTime));
-                    transform.localRotation =
+                    targetTransform.localPosition = Vector3.Lerp(insertStartPosition, insertStartPosition, animationCurve.Evaluate(t / halfTime));
+                    targetTransform.localRotation =
                         Quaternion.Slerp(startRotation, endRotation, animationCurve.Evaluate(t / halfTime));
 
                     yield return null;
                 }
 
                 SFX.LOADING.PlaySound();
+                this.enabled = false;
             }
         }
 

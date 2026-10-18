@@ -33,13 +33,15 @@ namespace ldjam60.Interactables
             if(_currentDriveIndex >= driveFileLists.Count)
                 return;
 
-            UIController.Instance.MountDrive(driveFileLists[_currentDriveIndex++].files, DestroyDrive);
+            UIController.Instance.MountDrive(driveFileLists[_currentDriveIndex].files, DestroyDrive);
         }
 
         public void DestroyDrive()
         {
+            _currentDriveIndex++;
             Debug.Log("Drive Destroyed...");
             Destroy(MountedDrive.gameObject);
+            drivePortInteractable.enabled = true;
             //drivePortInteractable.Mounted = null;
         }
 

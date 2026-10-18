@@ -1,4 +1,5 @@
-﻿using ldjam60.Files;
+﻿using System;
+using ldjam60.Files;
 using UnityEngine;
 
 namespace ldjam60.ScriptableObjects
@@ -6,6 +7,9 @@ namespace ldjam60.ScriptableObjects
     [CreateAssetMenu(fileName = "FileDefinition", menuName = "ScriptableObjects/File Definition", order = 1)]
     public class FileDefinitionScriptableObject : ScriptableObject
     {
+        [NonSerialized] 
+        public bool claimed;
+        
         public FILE_TYPE FileType => fileType;
         public string FileName => fileName;
         public Sprite Image => image;
