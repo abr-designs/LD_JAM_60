@@ -57,6 +57,7 @@ public class UIController : Singleton<UIController>
         SetWindowActive(false);
         
         CleanFiles();
+        CleanDisplay();
         
         fileContentsText.text = string.Empty;
         fileContentsImage.sprite = null;
@@ -76,6 +77,8 @@ public class UIController : Singleton<UIController>
         }
     }
 
+
+
     //Setup
     //================================================================================================================//
     private Action m_onFinished;
@@ -84,6 +87,7 @@ public class UIController : Singleton<UIController>
         m_onFinished = onFinished;
         
         CleanFiles();
+        CleanDisplay();
         GenerateFiles(file.fileDefinitions);
 
         SetWindowActive(true);
@@ -119,6 +123,21 @@ public class UIController : Singleton<UIController>
         }
         
         m_activeFileUIElements.Clear();
+    }
+    
+    private void CleanDisplay()
+    {
+        fileContentsHeaderText.text = string.Empty;
+        fileContentsText.text = string.Empty;
+        fileContentsImage.sprite = null;
+        fileContentsImage.gameObject.SetActive(false);
+        
+        //TODO Need to finish
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].onClick.RemoveAllListeners();
+            buttons[i].gameObject.SetActive(false);
+        }
     }
 
     //Progress

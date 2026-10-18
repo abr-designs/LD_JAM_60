@@ -49,6 +49,9 @@ namespace ldjam60.Interactables
             
             if(InteractableController.HoldingInteractable == null)
             {
+                if(s_playerAnimationController == null)
+                    s_playerAnimationController = FindAnyObjectByType<PlayerAnimationController>();
+                
                 //TODO Start to carry the drive
                 SFX.RUMMAGE.PlaySound();
                 //InteractableController.CarryInteractable(this);
@@ -66,6 +69,7 @@ namespace ldjam60.Interactables
             //FIXME This should be on the player controller, but there's some Order of Operations considerations to be making
             IEnumerator PickupCoroutine(float animationTime)
             {
+                
                 m_isBusy = true;
                 s_playerAnimationController.PlayPickupAnimation();
                 GameInputDelegator.SetInputLock(true);
