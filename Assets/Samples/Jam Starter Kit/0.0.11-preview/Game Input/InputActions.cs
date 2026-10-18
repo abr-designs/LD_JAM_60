@@ -332,6 +332,28 @@ namespace GameInput
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1a914305-f685-4d3e-ac72-bcb453e6d6fe"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b351351c-a3a3-4ddc-8212-23d4126110d7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""91f29c8e-af33-4772-8c2a-cb46079150f6"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
