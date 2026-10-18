@@ -20,11 +20,7 @@ namespace ldjam60.Interactables
 
         private static PlayerAnimationController s_playerAnimationController;
 
-        [SerializeField]
-        private FileDefinitionScriptableObject[] fileDefinitions;
-        
-
-
+        public FileDefinitionScriptableObject[] fileDefinitions;
         
         private Rigidbody m_rigidbody;
         private Collider m_collider;
