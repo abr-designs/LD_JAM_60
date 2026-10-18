@@ -227,3 +227,15 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 44060e8ca7950ea4ab21aa7ff2c5122f, type: 3}
     volume: 1
     maxPlaying: 1
+  - name: MECH_ALERT
+    type: 7
+    audioClips:
+    - {fileID: 8300000, guid: 1353cee5c6cb6e347b5979838ce326fa, type: 3}
+    volume: 1
+    maxPlaying: 1
+  - name: MECH_STEP
+    type: 8
+    audioClips:
+    - {fileID: 8300000, guid: be0e7e8f529504b4e8632bc8ea338814, type: 3}
+    volume: 1
+    maxPlaying: 1

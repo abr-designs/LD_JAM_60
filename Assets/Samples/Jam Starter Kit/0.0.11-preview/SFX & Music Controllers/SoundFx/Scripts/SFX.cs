@@ -9,5 +9,7 @@
         LOAD_DRIVE = 4,
         LOADING =  5,
         RUMMAGE = 6,
+        MECH_ALERT = 7,
+        MECH_STEP = 8
     }
 }

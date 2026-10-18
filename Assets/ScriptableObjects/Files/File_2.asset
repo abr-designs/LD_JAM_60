@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1c2b9678e5460ea490e889f7091595, type: 3}
+  m_Name: File_2
+  m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
+  fileType: 0
+  fileName: datalog 2
+  progressTowardsObjective: 0
+  fileContents: "Datalog 2:\r\nJune 5th, 3102:\r\nMesla has just announced their entry into military defense with project S.T.A.R.\r\nMelsa\u2019s CEO has publicized their 15-year contract with the United Northern Frontier. Critics are concerned about the implementation of Accelerated Learning and self-replication technology into machines designed for carrying out acts of war. Colt Erin reassures investors that \u201CThis technology may prevent the need for war altogether!\u201D showcasing its ability for more civil enforcement. "
+  image: {fileID: 21300000, guid: 0a3e4a69b8ac97746a2a2a3820b993c3, type: 3}

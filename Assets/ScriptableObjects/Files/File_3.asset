@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1c2b9678e5460ea490e889f7091595, type: 3}
+  m_Name: File_3
+  m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
+  fileType: 0
+  fileName: datalog 3
+  progressTowardsObjective: 0
+  fileContents: "Datalog 3: \r\nCompany memo:\r\nRival company, Defiant, has created a new chipset that quadruples the processing power of their machines using subatomic processors. Their claims of theoretical computing capabilities need to be verified, but this may hurt our market share if they are to release these chips publicly. We may need to rush production on [Corrupted], Dr.[Corrupted] will have to be pulled off [Corrupted] to help contribute."
+  image: {fileID: 0}
