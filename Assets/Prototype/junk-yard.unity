@@ -221,6 +221,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ---ENEMIES ---
       objectReference: {fileID: 0}
+    - target: {fileID: 3408563720613429620, guid: b7dde40dcf710a24a919253686210033, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408563720613429620, guid: b7dde40dcf710a24a919253686210033, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408563720613429620, guid: b7dde40dcf710a24a919253686210033, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -454
+      objectReference: {fileID: 0}
     - target: {fileID: 4162136703704632975, guid: b7dde40dcf710a24a919253686210033, type: 3}
       propertyPath: player
       value: 
@@ -3389,6 +3401,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1727715292993016329, guid: 9e7c9084e0ffc0d4f9458d9681839c13, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727715292993016329, guid: 9e7c9084e0ffc0d4f9458d9681839c13, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1994208395547090716, guid: 9e7c9084e0ffc0d4f9458d9681839c13, type: 3}

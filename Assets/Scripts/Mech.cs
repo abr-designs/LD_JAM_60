@@ -49,6 +49,13 @@ public class Mech : MonoBehaviour, IAnimateMech
         Drone.OnPlayerSpotted += OnPlayerSpotted;
     }
 
+    private void Start()
+    {
+        var dir = (transform.position - MechEndPosition).normalized;
+        transform.rotation = Quaternion.LookRotation(Vector3.down, dir);
+        //transform.up = dir;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Update()
     {
