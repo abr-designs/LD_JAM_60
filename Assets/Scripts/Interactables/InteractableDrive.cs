@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
+using Audio;
+using Audio.SoundFX;
 using GameInput;
 using ldjam60.Player;
+using ldjam60.ScriptableObjects;
 using Samples.CharacterController3D.Scripts;
 using UnityEngine;
 
@@ -16,11 +19,12 @@ namespace ldjam60.Interactables
                                                || InteractableController.HoldingInteractable == this;
 
         private static PlayerAnimationController s_playerAnimationController;
-        
-        [SerializeField, Range(0f, 1f)]
-        private float speedEffector;
 
-        private float m_startingSpeed;
+        [SerializeField]
+        private FileDefinitionScriptableObject[] fileDefinitions;
+        
+
+
         
         private Rigidbody m_rigidbody;
         private Collider m_collider;
@@ -35,7 +39,6 @@ namespace ldjam60.Interactables
             if(s_playerAnimationController == null)
                 s_playerAnimationController = FindAnyObjectByType<PlayerAnimationController>();
             
-            m_startingSpeed = CharacterController3D.SpeedMult;
             m_rigidbody =  GetComponent<Rigidbody>();
             m_collider =  GetComponent<Collider>();
         }
@@ -51,6 +54,7 @@ namespace ldjam60.Interactables
             if(InteractableController.HoldingInteractable == null)
             {
                 //TODO Start to carry the drive
+                SFX.RUMMAGE.PlaySound();
                 //InteractableController.CarryInteractable(this);
                 m_pickupCoroutine = StartCoroutine(PickupCoroutine(pickupAnimationTime));
             }
@@ -91,14 +95,12 @@ namespace ldjam60.Interactables
         {
             m_rigidbody.isKinematic = true;
             m_collider.enabled = false;
-            CharacterController3D.SpeedMult = speedEffector;
         }
 
         public void Drop()
         {
             m_rigidbody.isKinematic = false;
             m_collider.enabled = true;
-            CharacterController3D.SpeedMult = m_startingSpeed;
         }
         
         //================================================================================================================//

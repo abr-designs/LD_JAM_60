@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace ldjam60.ScriptableObjects
 {
+    [CreateAssetMenu(fileName = "FileDefinition", menuName = "ScriptableObjects/File Definition", order = 1)]
     public class FileDefinitionScriptableObject : ScriptableObject
     {
         //TODO Need to add public accessors
