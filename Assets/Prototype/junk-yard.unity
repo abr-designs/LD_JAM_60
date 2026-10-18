@@ -1124,7 +1124,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2093319692}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fb0aa2f0fcc32c64caf4c909145fe1b3, type: 3}
       propertyPath: m_LocalScale.x
@@ -1132,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb0aa2f0fcc32c64caf4c909145fe1b3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.9296653
+      value: 3.9296658
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb0aa2f0fcc32c64caf4c909145fe1b3, type: 3}
       propertyPath: m_LocalScale.z
@@ -2842,7 +2842,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2093319692}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1085543251
 MonoBehaviour:
@@ -3415,6 +3415,11 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.84
   m_Center: {x: 0.19344997, y: 2.1695004, z: 0.2514999}
+--- !u!4 &1418912791 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fb0aa2f0fcc32c64caf4c909145fe1b3, type: 3}
+  m_PrefabInstance: {fileID: 302545527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1432835236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4171,6 +4176,8 @@ Transform:
   - {fileID: 2090650626}
   - {fileID: 8277906048375672375}
   - {fileID: 9047149912363393769}
+  - {fileID: 1085543250}
+  - {fileID: 1418912791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2113117825 stripped
@@ -5107,5 +5114,3 @@ SceneRoots:
   - {fileID: 945074489}
   - {fileID: 4415323566589398713}
   - {fileID: 82270403}
-  - {fileID: 302545527}
-  - {fileID: 1085543250}
