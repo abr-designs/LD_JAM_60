@@ -1,7 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using ldjam60.ScriptableObjects;
+using UnityEngine;
 
 namespace ldjam60.Interactables
 {
+
+    [Serializable]
+    public class DriveFileList
+    {
+        public List<FileDefinitionScriptableObject> files = new();
+    } 
+
     public class InteractableTerminal : InteractableBase
     {
         public override bool IsInteractable => CanInteract();
@@ -11,13 +21,19 @@ namespace ldjam60.Interactables
 
         private InteractableDrive MountedDrive => drivePortInteractable.Mounted;
 
+        private int _currentDriveIndex = 0;
+        [SerializeField]
+        private List<DriveFileList> driveFileLists = new();
+
         //IInteractable Functions
         //================================================================================================================//
 
         public override void Interact()
         {
-            //TODO Fade into the 
-            UIController.Instance.MountDrive(MountedDrive, DestroyDrive);
+            if(_currentDriveIndex >= driveFileLists.Count)
+                return;
+
+            UIController.Instance.MountDrive(driveFileLists[_currentDriveIndex++].files, DestroyDrive);
         }
 
         public void DestroyDrive()

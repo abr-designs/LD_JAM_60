@@ -99,3 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.Interactables.InteractableTerminal
   <InteractableRadius>k__BackingField: 1
   drivePortInteractable: {fileID: 0}
+  driveFileLists:
+  - files:
+    - {fileID: 11400000, guid: ada8ac99feabdd142bce8e2a7da907ed, type: 2}
+    - {fileID: 11400000, guid: 5bc31876489dbd444ac1b92aa285b23c, type: 2}
+  - files:
+    - {fileID: 11400000, guid: ba0539fa500142240823a7e78e8a9c3c, type: 2}
+    - {fileID: 11400000, guid: 4b9dcdbc107ec944eaba8316c19a00bb, type: 2}
