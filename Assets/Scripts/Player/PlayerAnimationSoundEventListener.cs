@@ -2,6 +2,7 @@ using System;
 using Audio;
 using Audio.SoundFX;
 using GameInput;
+using ldjam60.Interactables;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,7 +36,7 @@ public class PlayerAnimationSoundEventListener : MonoBehaviour
     {
         chunkWalkAudioSource.volume = Mathf.SmoothDamp(
             chunkWalkAudioSource.volume,
-            m_isMoving ? maxVolume : 0f,
+            m_isMoving && InteractableController.HoldingInteractable != null ? maxVolume : 0f,
             ref m_volumeVelocity,
             0.3f);
     }
