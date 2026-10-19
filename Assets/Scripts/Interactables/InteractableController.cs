@@ -105,16 +105,15 @@ namespace ldjam60.Interactables
             if(s_interactables == null || s_interactables.Count == 0)
                 return null;
             
-            var sqrInteractableRadius = interactableRadius *  interactableRadius;
-
             var closestIndex = -1;
             var closestDistance = float.MaxValue;
+            var closestPriority = int.MinValue;
 
             for (var i = 0; i < s_interactables.Count; i++)
             {
                 var interactable = s_interactables[i];
 
-                if (!interactable.enabled)
+                if (!interactable.enabled || !interactable.IsInteractable)
                     continue;
 
                 //If the player is holding something, don't try to hold another?
@@ -122,17 +121,22 @@ namespace ldjam60.Interactables
                 if(HoldingInteractable != null && interactable is ICanBeCarried)
                     continue;
                 
-                var sqrObjectRadius = interactable.InteractableRadius * interactable.InteractableRadius;
                 var interactableSqrDistance = (interactable.WorldPosition - m_playerTransform.position).sqrMagnitude;
+                var combinedRadius = interactableRadius + interactable.InteractableRadius;
 
-                if (interactableSqrDistance > (sqrInteractableRadius + sqrObjectRadius))
+                if (interactableSqrDistance > combinedRadius * combinedRadius)
                     continue;
-                
-                if(interactableSqrDistance > closestDistance)
+
+                if (interactable.InteractionPriority < closestPriority)
+                    continue;
+
+                if (interactable.InteractionPriority == closestPriority &&
+                    interactableSqrDistance >= closestDistance)
                     continue;
                 
                 closestIndex = i;
                 closestDistance = interactableSqrDistance;
+                closestPriority = interactable.InteractionPriority;
             }
 
             return closestIndex == -1 ? null : s_interactables[closestIndex];

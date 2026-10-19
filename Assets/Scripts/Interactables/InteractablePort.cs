@@ -13,6 +13,8 @@ namespace ldjam60.Interactables
     public class InteractablePort : InteractableBase
     {
         public override bool IsInteractable => CanInteract();
+        public override int InteractionPriority =>
+            InteractableController.HoldingInteractable is InteractableDrive ? 100 : base.InteractionPriority;
 
         public InteractableDrive Mounted { get; private set; }
         

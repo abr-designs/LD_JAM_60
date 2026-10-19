@@ -227,7 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b50fcc9d6574825b138bf9cfc379543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.Interactables.InteractableTerminal
-  <InteractableRadius>k__BackingField: 1
+  <InteractableRadius>k__BackingField: 1.25
+  interactionCenterOffset: {x: 0, y: 0.5, z: 0}
+  interactionPriority: 0
   drivePortInteractable: {fileID: 8351886929190213829}
   driveFileLists:
   - files:
@@ -271,6 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.Interactables.InteractablePort
   <InteractableRadius>k__BackingField: 3
+  interactionCenterOffset: {x: 0, y: 0.302, z: -0.073}
+  interactionPriority: 0
   functionalAudioSource: {fileID: 7622078444814381361}
   maxVolume: 0.7
   insertStartPosition: {x: 0, y: 0.356, z: -0.245}

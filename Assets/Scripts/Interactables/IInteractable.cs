@@ -11,6 +11,7 @@ namespace ldjam60.Interactables
         
         bool IsInteractable { get; }
         float InteractableRadius { get; }
+        int InteractionPriority { get; }
         
         void Interact();
     }
