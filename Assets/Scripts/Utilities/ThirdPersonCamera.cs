@@ -69,9 +69,12 @@ namespace ldjam60.Utilities
             if (target == null)
                 return;
 
-            // Read mouse delta.
-            targetYaw += lastMouseDelta.x * mouseSensitivity;
-            targetPitch -= lastMouseDelta.y * mouseSensitivity;
+            // Pointer delta is an event value, not a persistent direction. Consume it once so
+            // browser pointer lock cannot replay the last non-zero delta across multiple frames.
+            var mouseDelta = lastMouseDelta;
+            lastMouseDelta = Vector2.zero;
+            targetYaw += mouseDelta.x * mouseSensitivity;
+            targetPitch -= mouseDelta.y * mouseSensitivity;
             targetPitch = Mathf.Clamp(targetPitch, minPitch, maxPitch);
 
             // Smooth camera rotation.
