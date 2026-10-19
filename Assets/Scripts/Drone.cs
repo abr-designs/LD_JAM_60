@@ -6,10 +6,24 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Drone : MonoBehaviour
 {
+    private readonly struct EmissionTarget
+    {
+        public readonly Renderer Renderer;
+        public readonly int MaterialIndex;
+
+        public EmissionTarget(Renderer renderer, int materialIndex)
+        {
+            Renderer = renderer;
+            MaterialIndex = materialIndex;
+        }
+    }
+
     private enum DroneState { Patrol, Suspicious, Chase, Investigate, Arrest }
+    private enum EmissionPreview { None, Patrol, Suspicious, Chase, Off }
 
     public static event Action<bool> OnPlayerSpotted;
     private static readonly HashSet<Drone> s_reportingDrones = new();
+    private static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
 
     [Header("Patrol")]
     [SerializeField] private Transform[] patrolPoints;
@@ -36,12 +50,23 @@ public class Drone : MonoBehaviour
     [Header("Feedback")]
     [SerializeField] private Material material;
     [SerializeField, Min(0.02f)] private float flashTime = 0.5f;
+    [SerializeField, ColorUsage(true, true)]
+    private Color patrolEmissionColor = new(3f, 1.71f, 0.35f, 1f);
+    [SerializeField, ColorUsage(true, true)]
+    private Color suspiciousEmissionColor = new(8f, 0.35f, 0.05f, 1f);
+    [SerializeField, ColorUsage(true, true)]
+    private Color chaseEmissionColor = new(16f, 0f, 0f, 1f);
 
     [Header("Debug")]
     [SerializeField] private bool drawVisionGizmos = true;
+    [SerializeField, Tooltip("Overrides only the drone light while in Play Mode; AI behavior continues normally.")]
+    private EmissionPreview emissionPreview;
+    [SerializeField, Range(0f, 1f), Tooltip("Patrol-to-suspicious blend used by the Suspicious preview.")]
+    private float suspiciousPreviewProgress = 0.5f;
 
     private readonly RaycastHit[] m_sightHits = new RaycastHit[16];
-    private readonly Color m_patrolColor = new(191f / 255f, 109f / 255f, 22f / 255f);
+    private readonly List<EmissionTarget> m_emissionTargets = new();
+    private MaterialPropertyBlock m_emissionProperties;
     private NavMeshAgent m_agent;
     private DroneState m_state;
     private int m_patrolIndex;
@@ -67,6 +92,7 @@ public class Drone : MonoBehaviour
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_patrolAngularSpeed = m_agent.angularSpeed;
+        CacheEmissionTargets();
         m_state = DroneState.Patrol;
         SetPatrolDestination();
     }
@@ -87,6 +113,8 @@ public class Drone : MonoBehaviour
             case DroneState.Investigate: UpdateInvestigate(); break;
             case DroneState.Arrest: UpdateArrest(); break;
         }
+
+        ApplyEmissionPreview();
     }
 
     private void OnDisable()
@@ -97,7 +125,7 @@ public class Drone : MonoBehaviour
 
     private void UpdatePatrol()
     {
-        SetEmission(m_patrolColor);
+        SetEmission(patrolEmissionColor);
         if (m_canSeePlayer)
         {
             m_detectionTimer = 0f;
@@ -130,7 +158,7 @@ public class Drone : MonoBehaviour
         m_hasLastKnownPosition = true;
         var multiplier = distance <= alert_distance ? closeDetectionMultiplier : 1f;
         m_detectionTimer += Time.deltaTime * multiplier;
-        SetEmission(Color.Lerp(m_patrolColor, Color.red * 4f,
+        SetEmission(Color.Lerp(patrolEmissionColor, suspiciousEmissionColor,
             Mathf.Clamp01(m_detectionTimer / detectionBuildTime)));
         if (m_detectionTimer < detectionBuildTime)
             return;
@@ -175,7 +203,7 @@ public class Drone : MonoBehaviour
 
     private void UpdateInvestigate()
     {
-        SetEmission(m_patrolColor);
+        SetEmission(patrolEmissionColor);
         if (m_canSeePlayer)
         {
             m_lastKnownPosition = player.transform.position;
@@ -286,13 +314,64 @@ public class Drone : MonoBehaviour
             return;
         m_flashTimer = 0f;
         m_flashOn = !m_flashOn;
-        SetEmission(m_flashOn ? Color.red * Mathf.Pow(2f, 6f) : Color.black);
+        SetEmission(m_flashOn ? chaseEmissionColor : Color.black);
     }
 
     private void SetEmission(Color color)
     {
-        if (material != null)
-            material.SetColor("_EmissionColor", color);
+        if (material == null)
+            return;
+
+        material.EnableKeyword("_EMISSION");
+        if (m_emissionTargets.Count == 0)
+            CacheEmissionTargets();
+
+        m_emissionProperties ??= new MaterialPropertyBlock();
+        foreach (var target in m_emissionTargets)
+        {
+            if (target.Renderer == null)
+                continue;
+
+            target.Renderer.GetPropertyBlock(m_emissionProperties, target.MaterialIndex);
+            m_emissionProperties.SetColor(EmissionColorId, color);
+            target.Renderer.SetPropertyBlock(m_emissionProperties, target.MaterialIndex);
+        }
+    }
+
+    private void CacheEmissionTargets()
+    {
+        m_emissionTargets.Clear();
+        if (material == null)
+            return;
+
+        foreach (var childRenderer in GetComponentsInChildren<Renderer>(true))
+        {
+            var sharedMaterials = childRenderer.sharedMaterials;
+            for (var materialIndex = 0; materialIndex < sharedMaterials.Length; materialIndex++)
+            {
+                if (sharedMaterials[materialIndex] == material)
+                    m_emissionTargets.Add(new EmissionTarget(childRenderer, materialIndex));
+            }
+        }
+    }
+
+    private void ApplyEmissionPreview()
+    {
+        switch (emissionPreview)
+        {
+            case EmissionPreview.Patrol:
+                SetEmission(patrolEmissionColor);
+                break;
+            case EmissionPreview.Suspicious:
+                SetEmission(Color.Lerp(patrolEmissionColor, suspiciousEmissionColor, suspiciousPreviewProgress));
+                break;
+            case EmissionPreview.Chase:
+                SetEmission(chaseEmissionColor);
+                break;
+            case EmissionPreview.Off:
+                SetEmission(Color.black);
+                break;
+        }
     }
 
     private void OnPlayerCaptured()

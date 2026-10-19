@@ -937,14 +937,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
-      propertyPath: seek_distance
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
-      propertyPath: alert_distance
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2097641747062058229, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 8858903674739143623}
@@ -1003,10 +995,6 @@ PrefabInstance:
     - target: {fileID: 4199142854278351554, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929007706718594465, guid: c9bca5c162174a44bab2d577ff547191, type: 3}
-      propertyPath: m_Speed
-      value: 2.84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -48,7 +48,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2.84
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -78,8 +78,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   player: {fileID: 0}
-  seek_distance: 20
-  alert_distance: 10
+  seek_distance: 15
+  alert_distance: 7
   visionAngle: 100
   eyeOffset: {x: 0, y: 1, z: 0}
   playerTargetHeight: 1
@@ -94,7 +94,12 @@ MonoBehaviour:
   chaseAngularSpeed: 75
   material: {fileID: 2100000, guid: d4bd9697db189894394d511e386c0c40, type: 2}
   flashTime: 0.5
+  patrolEmissionColor: {r: 6.000001, g: 3.4200006, b: 0.70000005, a: 1}
+  suspiciousEmissionColor: {r: 8, g: 0.35, b: 0.05, a: 1}
+  chaseEmissionColor: {r: 4, g: 0.020942407, b: 0, a: 1}
   drawVisionGizmos: 1
+  emissionPreview: 0
+  suspiciousPreviewProgress: 0.5
 --- !u!1 &4822921918717198748
 GameObject:
   m_ObjectHideFlags: 0
