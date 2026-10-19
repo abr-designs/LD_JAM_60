@@ -80,7 +80,21 @@ MonoBehaviour:
   player: {fileID: 0}
   seek_distance: 20
   alert_distance: 10
+  visionAngle: 100
+  eyeOffset: {x: 0, y: 1, z: 0}
+  playerTargetHeight: 1
+  visibilityMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  detectionBuildTime: 1.25
+  closeDetectionMultiplier: 1.25
+  loseSightGraceTime: 1
+  investigateDuration: 5
+  destinationRefreshTime: 0.65
+  chaseAngularSpeed: 75
   material: {fileID: 2100000, guid: d4bd9697db189894394d511e386c0c40, type: 2}
+  flashTime: 0.5
+  drawVisionGizmos: 1
 --- !u!1 &4822921918717198748
 GameObject:
   m_ObjectHideFlags: 0
