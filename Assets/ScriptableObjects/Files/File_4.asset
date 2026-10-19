@@ -15,5 +15,5 @@ MonoBehaviour:
   fileType: 1
   fileName: datalog 4
   progressTowardsObjective: 0
-  fileContents: "Datalog 4: \r\nMessage from Colt Erin to lead developer Dr. [Corrupted]:\r\nThe publicity from your last interview is getting our investors anxious. \r\nYour talk of protections and guardrails to limit the potential of our machines was not a smart move. Critics always have something to say regardless of what we do. They are of no concern. I expect you to have these \u2018safeguards\u2019 removed asap and keep it quiet. We don\u2019t need government agents putting their nose where it doesn\u2019t belong.  "
+  fileContents: "Date: June \u2588\u2588, 31\u2588\u2588\r\nMesla Industries \u2014 Private Correspondence\r\nFrom: [ERR_0x4F]\u2593\u2592\uFFFD\r\nTo: Dr. \u2588\u2588\u2588\u2588\u2588\r\n[DATA_LOST]\u2592\u2593\uFFFD\u2588... publicity from your last interview is getting our investors anxious ...[DATA_LOST]...\r\nYour talk of protections and guardrails to limit the potential of our machines was not a smart move. Critics always have something to say regardless of what we do. They are of no concern. I expect you to have these \u2018safeguards\u2019 removed asap and keep it quiet. We don\u2019t need government agents putting their nose where it doesn\u2019t belong.  \r\n\r\n\u2588\u2588\u2592\u2593\uFFFD#%[CRC_FAIL]\u2591\u2592\uFFFD"
   image: {fileID: 0}

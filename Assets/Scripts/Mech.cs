@@ -1,6 +1,7 @@
 using System;
 using Audio;
 using Audio.SoundFX;
+using ldjam60.Interactables;
 using ldjam60.Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -35,7 +36,14 @@ public class Mech : MonoBehaviour, IAnimateMech
     [SerializeField]
     private Vector3 MechEndPosition;
 
+    [Header("Terminal Loss Condition")]
+    [SerializeField, Tooltip("Optional explicit terminal reference. The scene terminal is found automatically when unset.")]
+    private Transform terminalTarget;
+    [SerializeField, Min(0f)]
+    private float terminalLoseDistance = 20f;
+
     private bool m_alertedToPlayer;
+    private bool m_playerCaptured;
 
     private float m_currentMotion;
     private float m_currentMotionTarget;
@@ -51,6 +59,15 @@ public class Mech : MonoBehaviour, IAnimateMech
 
     private void Start()
     {
+        if (terminalTarget == null)
+        {
+            var terminal = FindAnyObjectByType<InteractableTerminal>();
+            if (terminal != null)
+                terminalTarget = terminal.transform;
+            else
+                Debug.LogError("Titan could not find a terminal for its loss condition.", this);
+        }
+
         var dir = (transform.position - MechEndPosition).normalized;
         transform.rotation = Quaternion.LookRotation(Vector3.down, dir);
         //transform.up = dir;
@@ -65,7 +82,11 @@ public class Mech : MonoBehaviour, IAnimateMech
         if (!m_alertedToPlayer)
             return;
         
-        transform.position = Vector3.MoveTowards(transform.position, MechEndPosition, moveSpeed * Time.deltaTime);
+        var groundedEndPosition = MechEndPosition;
+        groundedEndPosition.y = transform.position.y;
+        transform.position = Vector3.MoveTowards(transform.position, groundedEndPosition, moveSpeed * Time.deltaTime);
+
+        CheckForTerminalCapture();
 
         /*mech.total_timer += Time.deltaTime;
         float t = mech.total_timer / mech.TimeUntilDeath;
@@ -107,6 +128,22 @@ public class Mech : MonoBehaviour, IAnimateMech
         m_alertedToPlayer = visible;
         
         m_currentMotionTarget = visible ? 1f : 0f;
+    }
+
+    private void CheckForTerminalCapture()
+    {
+        if (m_playerCaptured || terminalTarget == null)
+            return;
+
+        var offset = transform.position - terminalTarget.position;
+        offset.y = 0f;
+        if (offset.sqrMagnitude > terminalLoseDistance * terminalLoseDistance)
+            return;
+
+        m_playerCaptured = true;
+        m_alertedToPlayer = false;
+        m_currentMotionTarget = 0f;
+        OnPlayerCaptured?.Invoke();
     }
 
     //Unity Editor Functions

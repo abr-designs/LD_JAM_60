@@ -15,5 +15,5 @@ MonoBehaviour:
   fileType: 1
   fileName: datalog 6
   progressTowardsObjective: 0
-  fileContents: "Datalog 6:\r\nPublic radio broadcast: Hello, I don\u2019t know if this is getting out, but the Yanthem is under attack by the security droids that used to guard our building. I don't know what\u2019s going on (gunshots and screaming can be heard). Please send help. None of the cell towers are working; I\u2019m praying that this shortwave radio signal will reach someone."
+  fileContents: "Date: August \uFFFD7, 31\uFFFD8\r\nSource: Public Shortwave Radio Broadcast\r\nRE: Emergency Distress Signal \u2014 Yanthem\r\n\r\n\uFFFD\uFFFD\uFFFD He\uFFFD\uFFFDo? Is anyone receiving this? Yanthem is under attack by the very security droids assigned to protect us, and we have no idea what\u2019s ca\uFFFD\uFFFD\uFFFDing this. (Gunfire and screaming heard in the background) Please, we need help! The cell towers are down, and I don't know how much longer we can h\uFFFD\uFFFD\uFFFD out here. If anyone can hear this, please send som\uFFFD\uFFFD\uFFFDne, we're at \u2588\u2592?\xD7[DATA_LOST]\u2588\u2593 ... oh God, they're insi\uFFFD\uFFFD\uFFFD\u2014\r\n\r\n[SIGNAL LOST \u2014 END OF TRANSMISSION]"
   image: {fileID: 0}

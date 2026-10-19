@@ -15,5 +15,5 @@ MonoBehaviour:
   fileType: 1
   fileName: datalog 2
   progressTowardsObjective: 0
-  fileContents: "Datalog 2:\r\nJune 5th, 3102:\r\nMesla has just announced their entry into military defense with project S.T.A.R.\r\nMelsa\u2019s CEO has publicized their 15-year contract with the United Northern Frontier. Critics are concerned about the implementation of Accelerated Learning and self-replication technology into machines designed for carrying out acts of war. Colt Erin reassures investors that \u201CThis technology may prevent the need for war altogether!\u201D showcasing its ability for more civil enforcement. "
+  fileContents: "Date: June 5th, 3102\nSource: \uFFFD\u2593\u2592#@%\u2588 News\nArticle #00085031\r\nMesla has just announced their entry into military defense with project S.T.A.R.\r\nMesla\u2019s CEO has publicized their 15-year contract with the United Northern Frontier. Critics are concerned about the implementation of Accelerated Learning and self-replication technology into machines designed for carrying out acts of war. Colt Erin reassures investors that \u201CThis technology may prevent the need for war altogether!\u201D showcasing its ability for more civil enforcement. "
   image: {fileID: 21300000, guid: 0a3e4a69b8ac97746a2a2a3820b993c3, type: 3}

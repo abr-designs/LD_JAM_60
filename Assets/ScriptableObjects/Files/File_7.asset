@@ -15,5 +15,5 @@ MonoBehaviour:
   fileType: 1
   fileName: datalog 7
   progressTowardsObjective: 0
-  fileContents: "Datalog 7:\r\n May 26, 3199: The last remaining Yanthem stronghold has been bulldozed by the Goliath. That was our last hope. The machines have won. They strung up and mutilated the others. As the last survivor of Yanthem, I hope this message finds someone\u2026 anyone. Listen, the virus is still out there. The future is not lost\u2026 Even if I\u2019m not there to witness it. God, I miss the sun. Say hi to Clara for me, and that\u2026 I\u2019m sorry. (Single gunshot)End of audio log.   "
+  fileContents: "Date: May 26, 3199  \r\nSource: Yanthem Resistance \u2014 Final Audio Recording  \r\nRE: Fall of the Last Stronghold\r\n\r\n\u2593\u2592\u2588\uFFFD[DATA_LOST]#%\uFFFD\u2588\u2588\r\n\r\nThe last Yanthem stronghold has been leveled by the Goliath... That was our last hope. The machines have won. They strung up the others, mutilated them... I'm the only one l\uFFFDft. If anyone is hearing this, the v\uFFFDrus is still out there. The future isn't lost... even if I won't be there to see it. God, I miss the sun. If you find Clara, tell her I\u2019m s\uFFFD\uFFFD\uFFFDy... Tell her I\u2014\r\n\r\n(Single gunshot)\r\n\r\n[END OF AUDIO LOG \u2014 FILE INTEGRITY: 6\uFFFD%]"
   image: {fileID: 0}

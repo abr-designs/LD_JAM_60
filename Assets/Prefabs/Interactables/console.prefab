@@ -231,9 +231,10 @@ MonoBehaviour:
   interactionCenterOffset: {x: 0, y: 0.5, z: 0}
   interactionPriority: 0
   drivePortInteractable: {fileID: 8351886929190213829}
+  startingLibraryFiles:
+  - {fileID: 11400000, guid: ada8ac99feabdd142bce8e2a7da907ed, type: 2}
   driveFileLists:
   - files:
-    - {fileID: 11400000, guid: ada8ac99feabdd142bce8e2a7da907ed, type: 2}
     - {fileID: 11400000, guid: 5bc31876489dbd444ac1b92aa285b23c, type: 2}
     - {fileID: 11400000, guid: 4b9dcdbc107ec944eaba8316c19a00bb, type: 2}
   - files:
@@ -260,6 +261,11 @@ MonoBehaviour:
   - files:
     - {fileID: 11400000, guid: 65a8e6cb027580c48a93caae39db83bc, type: 2}
     - {fileID: 11400000, guid: 4b9dcdbc107ec944eaba8316c19a00bb, type: 2}
+  - files:
+    - {fileID: 11400000, guid: 9c3fcc9d3ba87564794aa1ee0d861243, type: 2}
+    - {fileID: 11400000, guid: 4b9dcdbc107ec944eaba8316c19a00bb, type: 2}
+  testWithSingleDrive: 0
+  debugDriveIndex: 0
 --- !u!114 &8351886929190213829
 MonoBehaviour:
   m_ObjectHideFlags: 0

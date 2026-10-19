@@ -32,7 +32,7 @@ namespace ldjam60.Interactables
     public class InteractableTerminal : InteractableBase
     {
         public override bool IsInteractable => InteractableController.HoldingInteractable == null;
-        public bool HasMountedDrive => MountedDrive != null && m_currentDriveIndex < driveFileLists.Count;
+        public bool HasMountedDrive => MountedDrive != null && m_currentDriveIndex < EffectiveDriveCount;
         public bool CanEject => HasMountedDrive && MountedFiles.Count > 0 && MountedFiles.All(file => file.Processed);
         public IReadOnlyList<TerminalFileState> MountedFiles
         {
@@ -46,9 +46,35 @@ namespace ldjam60.Interactables
         public float RecoveryPercent => m_totalZipWeight <= 0
             ? 0f
             : Mathf.Clamp01((float)m_recoveredZipWeight / m_totalZipWeight) * 100f;
+        public bool IsWinReady
+        {
+            get
+            {
+                if (RecoveryPercent < 100f || EffectiveDriveCount == 0)
+                    return false;
+
+                var finalDriveIndex = EffectiveDriveCount - 1;
+                var finalDriveProcessed = HasMountedDrive
+                                          && m_currentDriveIndex == finalDriveIndex
+                                          && MountedFiles.Count > 0
+                                          && MountedFiles.All(file => file.Processed);
+                var finalDriveEjected = !HasMountedDrive && m_currentDriveIndex >= EffectiveDriveCount;
+                return finalDriveProcessed || finalDriveEjected;
+            }
+        }
 
         [SerializeField] private InteractablePort drivePortInteractable;
+        [SerializeField, Tooltip("Files available in the terminal library at the start of the game.")]
+        private List<FileDefinitionScriptableObject> startingLibraryFiles = new();
         [SerializeField] private List<DriveFileList> driveFileLists = new();
+
+#if UNITY_EDITOR
+        [Header("Debug")]
+        [SerializeField, Tooltip("In Editor play mode, treat one configured drive as the complete recovery run.")]
+        private bool testWithSingleDrive;
+        [SerializeField, Min(0), Tooltip("Index in Drive File Lists used by the one-drive test run.")]
+        private int debugDriveIndex;
+#endif
 
         private InteractableDrive MountedDrive => drivePortInteractable.Mounted;
         private int m_currentDriveIndex;
@@ -57,13 +83,40 @@ namespace ldjam60.Interactables
         private readonly List<TerminalFileState> m_mountedFiles = new();
         private readonly List<FileDefinitionScriptableObject> m_libraryFiles = new();
 
+        private int EffectiveDriveCount
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (testWithSingleDrive && driveFileLists.Count > 0)
+                    return 1;
+#endif
+                return driveFileLists.Count;
+            }
+        }
+
         private void Awake()
         {
-            m_totalZipWeight = driveFileLists
-                .SelectMany(drive => drive.files)
+            foreach (var file in startingLibraryFiles)
+            {
+                if (file != null && file.FileType == FILE_TYPE.TEXT && !m_libraryFiles.Contains(file))
+                    m_libraryFiles.Add(file);
+            }
+
+            m_totalZipWeight = Enumerable.Range(0, EffectiveDriveCount)
+                .SelectMany(index => GetDriveFiles(index))
                 .Where(file => file != null && file.FileType == FILE_TYPE.ZIP)
                 .Sum(file => Mathf.Max(0, file.ProgressTowardsObjective));
         }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            debugDriveIndex = driveFileLists.Count == 0
+                ? 0
+                : Mathf.Clamp(debugDriveIndex, 0, driveFileLists.Count - 1);
+        }
+#endif
 
         public override void Interact()
         {
@@ -117,8 +170,17 @@ namespace ldjam60.Interactables
             if (!HasMountedDrive || m_mountedFiles.Count > 0)
                 return;
 
-            foreach (var file in driveFileLists[m_currentDriveIndex].files)
+            foreach (var file in GetDriveFiles(m_currentDriveIndex))
                 m_mountedFiles.Add(new TerminalFileState(file));
+        }
+
+        private IReadOnlyList<FileDefinitionScriptableObject> GetDriveFiles(int effectiveIndex)
+        {
+#if UNITY_EDITOR
+            if (testWithSingleDrive && driveFileLists.Count > 0)
+                return driveFileLists[Mathf.Clamp(debugDriveIndex, 0, driveFileLists.Count - 1)].files;
+#endif
+            return driveFileLists[effectiveIndex].files;
         }
     }
 }

@@ -15,11 +15,10 @@ MonoBehaviour:
   fileType: 1
   fileName: t-riggs
   progressTowardsObjective: 0
-  fileContents: 'June 12,  4406:
+  fileContents: 'Date: June 12,  4406
 
     Message From: Tabitha Riggs
 
 
-
     The Great Calamity has left the world scarred and ruined. Resources are running scarce, and those of us who remain are barely scraping by. One source points to this scrap yard as where it all started. It might be worth a dig if you are up for it. Might point us in the right direction to some hidden resource caches.'
-  image: {fileID: 21300000, guid: 24e8208e251edb1499d6bd8f7f5ad69a, type: 3}
+  image: {fileID: 0}

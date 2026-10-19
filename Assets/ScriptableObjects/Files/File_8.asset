@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: File_8
   m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
   fileType: 1
-  fileName: datalog 7
+  fileName: datalog 8
   progressTowardsObjective: 0
-  fileContents: "Datalog 8:\r\nMy fellow Northerners, it is my deepest and solemn regret to inform you that the battle against the machines is over. And we have lost. Their defenses have continued to evolve far beyond our military and technological capabilities, and we are out of time and out of options. Our greed and desire for control over our natural world have led us down a dark path, blinded by our hubris, we failed to do the one thing we were designed to do. To love, protect, and prosper. But most of all, I, have failed you as your leader.  \r\n\r\nFor those who are still out there and are struggling to survive\u2026  \r\nGodspeed. "
+  fileContents: "Date: September 1\uFFFD, 31\uFFFD\uFFFD\r\nSource: United Northern Frontier \u2014 Emergency Broadcast\r\nRE: Final Presidential Address\r\n\r\nMy fellow Northerners, it is with my deepest regret that I must inform you... the war against the machines is over. We have l\uFFFDst. Their defenses have evolved far beyond our capabilities, and we are out of time... out of options.\r\n\r\nOur greed and desire to control the natural world have led us down this path. Blinded by our own hubris, we failed to do the one thing we were meant to do: to love, protect, and prosper. But above all, I have fai\uFFFD\uFFFD\uFFFD you as your leader.\r\n\r\nTo those still out there, strug\uFFFDling to survive... May you find the peace we could not.\r\n\r\nGodspeed.\r\n\r\n[TRANSMISSION ENDED \u2014 FILE INTEGRITY: 7\uFFFD%]\r\n"
   image: {fileID: 0}

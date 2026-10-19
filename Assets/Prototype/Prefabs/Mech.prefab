@@ -303,6 +303,8 @@ MonoBehaviour:
   alertShakeIntensity: 0.075
   alertShakeDuration: 1
   MechEndPosition: {x: 0, y: 0, z: 0}
+  terminalTarget: {fileID: 0}
+  terminalLoseDistance: 20
 --- !u!1 &1795949645085339335
 GameObject:
   m_ObjectHideFlags: 0

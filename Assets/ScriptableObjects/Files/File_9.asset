@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1c2b9678e5460ea490e889f7091595, type: 3}
+  m_Name: File_9
+  m_EditorClassIdentifier: Assembly-CSharp::ldjam60.ScriptableObjects.FileDefinitionScriptableObject
+  fileType: 1
+  fileName: datalog 9
+  progressTowardsObjective: 0
+  fileContents: "Date: \u2593\u2592\u2591\uFFFD#%@\xD7 \uFFFD\uFFFD, 31\uFFFD\uFFFD  \r\nSource: Mesla Industries \u2014 Internal Research Archive  \r\nRE: Project Lazarus \u2014 Recovery Protocol\r\n\r\n[DATA_LOST]... they've found a way to detect and erase every attempt we've made to shut them down... Dr. Erret's final protocol was designed to hide where they would never think to look: inside the corrup\uFFFDed data itself ...[DATA_LOST]... appears to be random decay is no accident; [ERR_0x4F]\u2593\u2592\uFFFD... fragments are scattered across archived files, disguised as errors in the original enc\uFFFDding. If someone can recover the damaged sectors and reassemble them in the correct sequence, the virus might still be [DATA_LOST].\r\n\r\n**[END OF FILE \u2014 INTEGRITY CHECK FAILED]**"
+  image: {fileID: 0}

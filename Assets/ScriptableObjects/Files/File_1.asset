@@ -15,5 +15,5 @@ MonoBehaviour:
   fileType: 1
   fileName: datalog 1
   progressTowardsObjective: 0
-  fileContents: "Datalog 1:\r\nApril 30, 3091:\r\nBreaking news!  Melsa Industries has just unveiled their newest rendition of Helping Hands! The founder, Colt Erin, states: \u201CThese fully autonomous and self-replicating industrial machines will revolutionize the civil engineering and construction industrial complex\u201D\r\n"
+  fileContents: "Date: April 30, 3091\r\nSource: \u2588\u2593\u2592\u2591\uFFFD#%@\xD7\nArticle #00075348\r\nBreaking news!  Mesla Industries has just unveiled their newest rendition of Helping Hands! The founder, Colt Erin, states: \u201CThese fully autonomous and self-replicating industrial machines will revolutionize the civil engineering and construction industrial complex\u201D"
   image: {fileID: 21300000, guid: 24e8208e251edb1499d6bd8f7f5ad69a, type: 3}

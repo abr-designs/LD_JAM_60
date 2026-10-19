@@ -6,6 +6,7 @@ using ldjam60.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Utilities;
 
@@ -22,12 +23,14 @@ public class UIController : Singleton<UIController>
     [SerializeField] private TMP_Text fileContentsHeaderText;
     [SerializeField] private TMP_Text fileContentsText;
     [SerializeField] private Image fileContentsImage;
+    [SerializeField] private ScrollRect fileContentsScrollRect;
     [SerializeField] private Button[] buttons;
 
     [Header("Misc")]
     [SerializeField] private TMP_Text progressBarText;
     [SerializeField] private Slider progressBar;
     [SerializeField] private Button exitButton;
+    [SerializeField] private GameEndUIController gameEndUI;
 
     private readonly List<FileUIElement> m_activeFileUIElements = new();
     private InteractableTerminal m_terminal;
@@ -35,6 +38,7 @@ public class UIController : Singleton<UIController>
     private int m_selectedDriveFileIndex = -1;
     private bool m_showingDrive;
     private bool m_windowOpen;
+    private bool m_isTransitioning;
     private char m_driveLetter;
 
     private Button m_processButton;
@@ -59,6 +63,12 @@ public class UIController : Singleton<UIController>
 
         GameInputDelegator.SetInputLock(false);
         InteractableController.PauseScan = false;
+    }
+
+    private void Update()
+    {
+        if (m_windowOpen && !m_isTransitioning && Keyboard.current?.escapeKey.wasPressedThisFrame == true)
+            CloseTerminal();
     }
 
     public void OpenTerminal(InteractableTerminal terminal)
@@ -172,6 +182,7 @@ public class UIController : Singleton<UIController>
             fileContentsHeaderText.text = "NO DRIVE MOUNTED";
             fileContentsText.text = "Insert a drive into the terminal port to recover its files.";
             ConfigureDriveActions();
+            RefreshFileContentsScroll();
             return;
         }
 
@@ -204,6 +215,7 @@ public class UIController : Singleton<UIController>
         {
             fileContentsHeaderText.text = "DRIVE PROCESSED";
             fileContentsText.text = "All files have been recovered. Eject the empty drive to continue.";
+            RefreshFileContentsScroll();
         }
     }
 
@@ -219,6 +231,7 @@ public class UIController : Singleton<UIController>
             fileContentsHeaderText.text = "NO RECOVERED FILES";
             fileContentsText.text = "Recover text files from a mounted drive to add them to this library.";
             ConfigureLibraryActions();
+            RefreshFileContentsScroll();
             return;
         }
 
@@ -253,6 +266,7 @@ public class UIController : Singleton<UIController>
             fileContentsText.text = file.FileType == FILE_TYPE.ZIP
                 ? "Archive successfully unzipped. Recovery progress updated."
                 : "File recovered. Open the Library tab to read it.";
+            RefreshFileContentsScroll();
             return;
         }
 
@@ -269,10 +283,12 @@ public class UIController : Singleton<UIController>
             default:
                 fileContentsText.text = "Unsupported file type.";
                 m_processButton.gameObject.SetActive(false);
+                RefreshFileContentsScroll();
                 return;
         }
 
         m_processButton.onClick.AddListener(ProcessSelectedFile);
+        RefreshFileContentsScroll();
     }
 
     private void SelectLibraryFile(FileUIElement element, FileDefinitionScriptableObject file)
@@ -283,6 +299,44 @@ public class UIController : Singleton<UIController>
         fileContentsText.text = file.FileContents;
         fileContentsImage.sprite = file.Image;
         fileContentsImage.gameObject.SetActive(file.Image != null);
+        RefreshFileContentsScroll();
+    }
+
+    private void RefreshFileContentsScroll()
+    {
+        if (fileContentsScrollRect == null || fileContentsScrollRect.content == null)
+            return;
+
+        Canvas.ForceUpdateCanvases();
+
+        var viewport = fileContentsScrollRect.viewport != null
+            ? fileContentsScrollRect.viewport
+            : (RectTransform)fileContentsScrollRect.transform;
+        var content = fileContentsScrollRect.content;
+        var textRect = fileContentsText.rectTransform;
+        var availableTextWidth = Mathf.Max(1f, textRect.rect.width);
+        var textHeight = fileContentsText.GetPreferredValues(
+            fileContentsText.text,
+            availableTextWidth,
+            Mathf.Infinity).y;
+        var imageHeight = fileContentsImage.gameObject.activeSelf
+            ? fileContentsImage.rectTransform.rect.height
+            : 0f;
+        var requiredHeight = Mathf.Max(textHeight, imageHeight) + 40f;
+
+        content.anchorMin = new Vector2(0f, 1f);
+        content.anchorMax = new Vector2(1f, 1f);
+        content.pivot = new Vector2(0.5f, 1f);
+        content.SetSizeWithCurrentAnchors(
+            RectTransform.Axis.Vertical,
+            Mathf.Max(viewport.rect.height, requiredHeight));
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+        fileContentsScrollRect.horizontal = false;
+        fileContentsScrollRect.vertical = true;
+        fileContentsScrollRect.scrollSensitivity = 35f;
+        fileContentsScrollRect.StopMovement();
+        fileContentsScrollRect.verticalNormalizedPosition = 1f;
     }
 
     private void SetSelectedElement(FileUIElement element)
@@ -375,7 +429,28 @@ public class UIController : Singleton<UIController>
 
     private void CloseTerminal()
     {
+        if (m_isTransitioning)
+            return;
+
         ClearUiFocus();
+
+        if (m_terminal != null && m_terminal.IsWinReady)
+        {
+            if (gameEndUI == null)
+            {
+                Debug.LogError("Terminal UI requires a Game End UI Controller.", this);
+                SetWindowActive(false);
+                return;
+            }
+
+            m_isTransitioning = true;
+            exitButton.interactable = false;
+            window.SetActive(false);
+            m_windowOpen = false;
+            gameEndUI.ShowEndScreen(true);
+            return;
+        }
+
         SetWindowActive(false);
     }
 

@@ -15,5 +15,5 @@ MonoBehaviour:
   fileType: 1
   fileName: datalog 3
   progressTowardsObjective: 0
-  fileContents: "Datalog 3: \r\nCompany memo:\r\nRival company, Defiant, has created a new chipset that quadruples the processing power of their machines using subatomic processors. Their claims of theoretical computing capabilities need to be verified, but this may hurt our market share if they are to release these chips publicly. We may need to rush production on [Corrupted], Dr.[Corrupted] will have to be pulled off [Corrupted] to help contribute."
+  fileContents: "Date: \uFFFD\uFFFD\uFFFD\uFFFD, 31\u2588\u2588\r\nSource: Mesla Industries \u2014 Internal Memo\r\nRE: Competitive Threat Assessment\r\n\r\n[DATA_ERR] #!#\xDE\xF8#\xFF!#\xA1\xD7 rival company Defiant has developed a new chipset utilizing subatomic processors, reportedly quadrupling the processing power of their machines. While these claims remain unverified, a public release could severely impact our market sh\u2593re. We may need to accelerate production of [DATA_LOST], and Dr. E\u2588\u2588et will need to be reassigned from Project [DATA_LOST] to assist with dev\uFFFDlopment.\r\n\r\n"
   image: {fileID: 0}
