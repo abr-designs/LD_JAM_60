@@ -12,9 +12,17 @@ namespace ldjam60.Player
 
         private bool m_hasInput;
         private float m_animationSpeed, m_speedVelocity;
+        private int m_capeLayerIndex = -1;
 
         [SerializeField]
         private Animator animator;
+
+        private void Start()
+        {
+            m_capeLayerIndex = animator.GetLayerIndex("Cape");
+            if (m_capeLayerIndex < 0)
+                Debug.LogWarning("Player Animator is missing the Cape animation layer.", this);
+        }
         
         private void OnEnable()
         {
@@ -31,6 +39,8 @@ namespace ldjam60.Player
             
             
             animator.SetFloat(SpeedAnimationHash, m_animationSpeed);
+            if (m_capeLayerIndex >= 0)
+                animator.SetLayerWeight(m_capeLayerIndex, m_animationSpeed);
         }
 
 
